@@ -86,8 +86,73 @@ def lire_trace(path_to_file):
 								
 							
 		
-		
-		print(frame_list)
+		#print(frame_list)
 		return frame_list
+
+def hexa_to_binaire(suite_chiffres_h):
+    nb_bits=len(suite_chiffres_h)*4
+    suite_chiffres_2=int(suite_chiffres_h,16)
+    suite_chiffres_b=bin(suite_chiffres_2)
+    suiteARetourner=suite_chiffres_b[2:].zfill(nb_bits)
+    return suiteARetourner
+
+def binaire_to_hexa(suite_chiffres_b):
+    suite_chiffre_2=int(suite_chiffres_b,2)
+    suite_chiffres_h=hex(suite_chiffre_2)
+    return suite_chiffres_h
+
+def obtenir_des_chiffres_voulus(suite_chiffres_h,debut,nb): #utilisable aussi pour les binaires
+    fin=debut+nb
+    list_voulu=[]
+    for i in range(debut,fin):
+        list_voulu.append(suite_chiffres_h[i])
     
-li=lire_trace("deux-trames-correctes.trame")
+    return list_voulu
+
+def list_octet_to_chiffre(liste_octet):
+    liste_chiffre=[]
+    for octet in liste_octet:
+        liste_chiffre.append(octet[0])
+        liste_chiffre.append(octet[1])
+    return liste_chiffre  
+
+ethernet = {
+	"0800" : "IP Datagram",
+	"0805" : "X.25 level 3",
+	"0806" : "ARP",
+	"8035" : "RARP",
+	"8098" : "AppleTalk"
+}      
+
+def decodage_entete_ethernet(list_octets):
+    liste_entete=obtenir_des_chiffres_voulus(list_octets,0,14)
+    liste_entete_2=list_octet_to_chiffre(liste_entete)
+    print(" Ethernet 2")
+    adress_dest=""
+    adress_source=""
+    for i in range(0,11,2):
+        adress_dest=adress_dest+":"+liste_entete_2[i]+liste_entete_2[i+1]
+    adress_dest=adress_dest.lstrip(":")
+    print("\t Adresse de destionation : "+adress_dest)
+    
+    for i in range(12,23,2):
+        adress_source=adress_source +":"+liste_entete_2[i]+liste_entete_2[i+1]
+    adress_source=adress_source.lstrip(":")
+    print("\t Adresse de la source : "+adress_source)
+    
+    type_ethernet=liste_entete_2[24]+liste_entete_2[25]+liste_entete_2[26]+liste_entete_2[27]
+    print("\t Type "+ethernet[type_ethernet]+"(0x"+type_ethernet+")")
+        
+
+#print(hexa_to_binaire("AB456"))
+
+def main():
+    li=lire_trace("deux-trames-correctes.trame")
+    for frame in li:
+        liste_octets=[]
+        for line in frame:
+            for byte in line:
+                liste_octets.append(byte)
+        decodage_entete_ethernet(liste_octets)
+
+main()
