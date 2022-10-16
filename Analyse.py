@@ -148,7 +148,7 @@ def decodage_entete_ethernet(list_octets):
 #print(hexa_to_binaire("AB456"))
 
 def main():
-    nom_fic=input()
+    nom_fic=input("Veuillez rédiger le nom du fichier :")
     li=lire_trace(nom_fic)
     for frame in li:
         liste_octets=[]
