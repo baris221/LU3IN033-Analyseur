@@ -121,7 +121,8 @@ ethernet = {
 	"0805" : "X.25 level 3",
 	"0806" : "ARP",
 	"8035" : "RARP",
-	"8098" : "AppleTalk"
+	"8098" : "AppleTalk",
+    "8137" : "IPX"
 }      
 
 def decodage_entete_ethernet(list_octets):
@@ -147,7 +148,8 @@ def decodage_entete_ethernet(list_octets):
 #print(hexa_to_binaire("AB456"))
 
 def main():
-    li=lire_trace("deux-trames-correctes.trame")
+    nom_fic=input()
+    li=lire_trace(nom_fic)
     for frame in li:
         liste_octets=[]
         for line in frame:
