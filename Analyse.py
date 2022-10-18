@@ -134,7 +134,7 @@ def decodage_entete_ethernet(list_octets):
     for i in range(0,11,2):
         adress_dest=adress_dest+":"+liste_entete_2[i]+liste_entete_2[i+1]
     adress_dest=adress_dest.lstrip(":")
-    print("\t Adresse de destionation : "+adress_dest)
+    print("\t Adresse de destination : "+adress_dest)
     
     for i in range(12,23,2):
         adress_source=adress_source +":"+liste_entete_2[i]+liste_entete_2[i+1]
