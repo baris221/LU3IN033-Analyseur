@@ -1,8 +1,10 @@
+Frame 1: 221 bytes (1768 bits).
  Ethernet 2
 	 Adresse de destination : 00:20:ed:87:fd:e6
 	 Adresse de la source : 00:07:e9:0c:90:62
 	 Type IP Datagram(0x0800)
 -------------------------------------
+Frame 2: 342 bytes (2736 bits).
  Ethernet 2
 	 Adresse de destination : ff:ff:ff:ff:ff:ff
 	 Adresse de la source : 00:1c:c0:e8:23:21
