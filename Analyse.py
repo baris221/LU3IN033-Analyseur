@@ -7,25 +7,31 @@ Created on Fri Sep 30 13:46:06 2022
 import contextlib
 
 def decodable_offset(offset):
-	if len(offset) < 2 or not offset.isalnum():
-		return False
-	for chiffre_hexadecimal in offset:
-		if chiffre_hexadecimal.isalpha():
-			if not(chiffre_hexadecimal.lower() in ["a","b","c","d","e","f"]):
-				return False
-	return True
+    """string->boolean
+    Si l'offset est décodable, la fonction renvoie true"""
+    if len(offset) < 2 or not offset.isalnum():
+        return False
+    for chiffre_hexadecimal in offset:
+        if chiffre_hexadecimal.isalpha():
+            if not(chiffre_hexadecimal.lower() in ["a","b","c","d","e","f"]):
+                return False
+    return True
 	
 def decodable_byte(byte):
-	if len(byte) != 2 or not byte.isalnum():
-		return False
-	for chiffre_hexadecimal in byte:
-		if chiffre_hexadecimal.isalpha():
-			if not(chiffre_hexadecimal.lower() in ["a","b","c","d","e","f"] ):
-				return False
-	return True
+    """byte->boolean
+    Si lr byte est décodable, la fonction retourne true"""
+    if len(byte) != 2 or not byte.isalnum():
+        return False
+    for chiffre_hexadecimal in byte:
+        if chiffre_hexadecimal.isalpha():
+            if not(chiffre_hexadecimal.lower() in ["a","b","c","d","e","f"] ):
+                return False
+    return True
 
 
 def lire_trace(path_to_file):
+    """FILE->list[byte]
+    Elle renvoie la liste des bytes au fichier path_to_file"""
     with open(path_to_file, "rt") as f:
         frame_list = []
         #line_list contient les contenus de la liste
@@ -40,7 +46,7 @@ def lire_trace(path_to_file):
         for j in range(len(line_list)):
             line_list[j] = line_list[j].split()
             if(line_list[j]==[]):
-                break
+                continue
             if decodable_offset(line_list[j][0]):
                 if int(line_list[j][0], 16) == 0:
                     i = i+1
@@ -92,10 +98,12 @@ def lire_trace(path_to_file):
 				#print(line)
 								
 							
-		#print(frame_list)
+        print(frame_list)
         return frame_list
 
 def hexa_to_binaire(suite_chiffres_h):
+    """hexadecimal number->binary number
+    La fonction retourne la valeur binaire de nombre héxadécimal"""
     nb_bits=len(suite_chiffres_h)*4
     suite_chiffres_2=int(suite_chiffres_h,16)
     suite_chiffres_b=bin(suite_chiffres_2)
@@ -103,11 +111,15 @@ def hexa_to_binaire(suite_chiffres_h):
     return suiteARetourner
 
 def binaire_to_hexa(suite_chiffres_b):
+    """list[binary number]->list[hexadecimal number]
+    La fonction retourne la valuer héxadécimal de nombre binaire"""
     suite_chiffre_2=int(suite_chiffres_b,2)
     suite_chiffres_h=hex(suite_chiffre_2)
     return suite_chiffres_h
 
 def obtenir_des_chiffres_voulus(suite_chiffres_h,debut,nb): #utilisable aussi pour les binaires
+    """list[]->list[]
+    Renvoie la liste qui contient des éléments de début à debut+nb"""
     fin=debut+nb
     list_voulu=[]
     for i in range(debut,fin):
@@ -116,6 +128,8 @@ def obtenir_des_chiffres_voulus(suite_chiffres_h,debut,nb): #utilisable aussi po
     return list_voulu
 
 def list_octet_to_chiffre(liste_octet):
+    """list[(int,int)]->list[int]
+    Renvoie la liste qui place tous les couples en ordre"""
     liste_chiffre=[]
     for octet in liste_octet:
         liste_chiffre.append(octet[0])
@@ -132,6 +146,9 @@ ethernet = {
 }      
 
 def decodage_entete_ethernet(list_octets):
+    """list[int]->void
+    Elle prend 28 premiers bits et décode les bits en fonction de
+    12 premiers bits destinations,12 bits suivant source,4 bits type de ethernet"""
     liste_entete=obtenir_des_chiffres_voulus(list_octets,0,14)
     liste_entete_2=list_octet_to_chiffre(liste_entete)
     print(" Ethernet 2")
