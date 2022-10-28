@@ -98,7 +98,7 @@ def lire_trace(path_to_file):
 				#print(line)
 								
 							
-        print(frame_list)
+        #print(frame_list)
         return frame_list
 
 def hexa_to_binaire(suite_chiffres_h):
