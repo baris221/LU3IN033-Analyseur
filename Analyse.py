@@ -183,7 +183,16 @@ def decodage_entete_ip(list_octets):
     liste_entete_2=list_octet_to_chiffre(liste_entete)
     
     version=liste_entete_2[0]
-    print("\t Version: "+version)
+    print("\t Version : "+version)
+    
+    ihl=liste_entete_2[1]
+    print("\t IHL : "+str(int(ihl,16))+"octets 0x("+ihl+")")
+    
+    tos=liste_entete_2[2]+""+liste_entete_2[3]
+    print("\t Type of Service : "+tos)
+    
+    total_length=liste_entete_2[4]+""+liste_entete_2[5]+""+liste_entete_2[6]+""+liste_entete_2[7]
+    print("\t Total Lenght : "+total_length)
     
 
 def decodage_options(list_octets):
@@ -191,6 +200,11 @@ def decodage_options(list_octets):
     Elle renvoie la suite """
     liste_entete=obtenir_des_chiffres_voulus(list_octets,14,20)
     liste_entete_2=list_octet_to_chiffre(liste_entete)
+    ihl=int(liste_entete_2[1],16)
+    if(4*ihl !=20):
+        print("Option")
+    
+    return 68
     
 
 #print(hexa_to_binaire("AB456"))
