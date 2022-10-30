@@ -5,7 +5,7 @@ Ethernet 2
 	 Type IP Datagram(0x0800)
 IPV4
 	 Version : 4
-	 IHL : 5octets 0x(5)
+	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
 	 Total Lenght : 207
 	 Identification : 2a2d
@@ -27,7 +27,7 @@ Ethernet 2
 	 Type IP Datagram(0x0800)
 IPV4
 	 Version : 4
-	 IHL : 5octets 0x(5)
+	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
 	 Total Lenght : 328
 	 Identification : c872
