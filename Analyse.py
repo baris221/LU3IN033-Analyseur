@@ -143,7 +143,7 @@ ethernet = {
 	"8035" : "RARP",
 	"8098" : "AppleTalk",
     "8137" : "IPX"
-}      
+}
 
 def decodage_entete_ethernet(list_octets):
     """list[int]->void
@@ -166,7 +166,32 @@ def decodage_entete_ethernet(list_octets):
     
     type_ethernet=liste_entete_2[24]+liste_entete_2[25]+liste_entete_2[26]+liste_entete_2[27]
     print("\t Type "+ethernet[type_ethernet]+"(0x"+type_ethernet+")")
-        
+    
+protocoles_ip = {
+	"1" : "ICMP",
+	"2" : "IGMP",
+	"6" : "TCP",
+	"8" : "EGP",
+	"9" : "IGP",
+	"17" : "UDP",
+	"36" : "XTP",
+	"46" : "RSVP"
+}
+def decodage_entete_ip(list_octets):
+    """list[int]->void"""
+    liste_entete=obtenir_des_chiffres_voulus(list_octets,14,20)
+    liste_entete_2=list_octet_to_chiffre(liste_entete)
+    
+    version=liste_entete_2[0]
+    print("\t Version: "+version)
+    
+
+def decodage_options(list_octets):
+    """list[int]->int
+    Elle renvoie la suite """
+    liste_entete=obtenir_des_chiffres_voulus(list_octets,14,20)
+    liste_entete_2=list_octet_to_chiffre(liste_entete)
+    
 
 #print(hexa_to_binaire("AB456"))
 
