@@ -151,7 +151,7 @@ def decodage_entete_ethernet(list_octets):
     12 premiers bits destinations,12 bits suivant source,4 bits type de ethernet"""
     liste_entete=obtenir_des_chiffres_voulus(list_octets,0,14)
     liste_entete_2=list_octet_to_chiffre(liste_entete)
-    print(" Ethernet 2")
+    print("Ethernet 2")
     adress_dest=""
     adress_source=""
     for i in range(0,11,2):
@@ -181,6 +181,7 @@ def decodage_entete_ip(list_octets):
     """list[int]->void"""
     liste_entete=obtenir_des_chiffres_voulus(list_octets,14,20)
     liste_entete_2=list_octet_to_chiffre(liste_entete)
+    print("IPV4")
     
     version=liste_entete_2[0]
     print("\t Version : "+version)
@@ -192,7 +193,43 @@ def decodage_entete_ip(list_octets):
     print("\t Type of Service : "+tos)
     
     total_length=liste_entete_2[4]+""+liste_entete_2[5]+""+liste_entete_2[6]+""+liste_entete_2[7]
-    print("\t Total Lenght : "+total_length)
+    print("\t Total Lenght : "+str(int(total_length,16)))
+    
+    ident=liste_entete_2[8]+""+liste_entete_2[9]+""+liste_entete_2[10]+liste_entete_2[11]
+    print("\t Identification : "+ident)
+    
+    f_fo=liste_entete_2[12]+""+liste_entete_2[13]+""+liste_entete_2[14]+liste_entete_2[15]
+    f_fo=hexa_to_binaire(f_fo)
+    print("\t Flags")
+    print("\t \t Reserved bit : "+f_fo[0])
+    print("\t \t Don't fragment : "+f_fo[1])
+    print("\t \t More Fragment : "+f_fo[2])
+    
+    f_fo=f_fo[2:15]
+    print("\t Fragment offset : "+binaire_to_hexa(f_fo)+"("+str(int(f_fo,2))+")")
+    
+    ttl=liste_entete_2[16]+""+liste_entete_2[17]
+    print("\t Time To Live : "+str(int(ttl,16)))
+    
+    protocol=liste_entete_2[18]+""+liste_entete_2[19]
+    print("\t Protocol : "+protocoles_ip[str(int(protocol,16))]+"("+str(int(protocol,16))+")")
+    
+    checksum=liste_entete_2[20]+""+liste_entete_2[21]+""+liste_entete_2[22]+""+liste_entete_2[23]
+    print("\t Header Checksum unverified : "+checksum)
+    
+    adress_source=""
+    for i in range(24,31,2):
+        adress_source=adress_source+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
+    adress_source=adress_source.lstrip(".")
+    print("\t Source Adress : "+adress_source)
+    
+    adress_dest=""
+    for i in range(32,39,2):
+        adress_dest=adress_dest+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
+    adress_dest=adress_dest.lstrip(".")
+    print("\t Destination Adress : "+adress_dest)
+        
+    
     
 
 def decodage_options(list_octets):
@@ -223,6 +260,7 @@ def main():
                 longeur_list=len(liste_octets)
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 decodage_entete_ethernet(liste_octets)
+                decodage_entete_ip(liste_octets)
                 print("-------------------------------------")
                 i=i+1
 
