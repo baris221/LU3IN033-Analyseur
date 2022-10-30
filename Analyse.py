@@ -5,6 +5,7 @@ Created on Fri Sep 30 13:46:06 2022
 @author: baris
 """
 import contextlib
+import sys
 
 def decodable_offset(offset):
     """string->boolean
@@ -272,7 +273,7 @@ def decodage_options(list_octets):
 #print(hexa_to_binaire("AB456"))
 
 def main():
-    nom_fic=input("Veuillez rédiger le nom du fichier :")
+    nom_fic=sys.argv[1]
     li=lire_trace(nom_fic)
     i=1
     with open("resultat.txt","w") as f:
