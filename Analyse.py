@@ -229,7 +229,14 @@ def decodage_entete_ip(list_octets):
     adress_dest=adress_dest.lstrip(".")
     print("\t Destination Adress : "+adress_dest)
         
-    
+options = {
+	"0" : "EOOL",
+	"1" : "NOP",
+	"7" : "RR",
+	"68" : "TS",
+	"131" : "LSR",
+	"137" : "SSR"
+}   
     
 
 def decodage_options(list_octets):
@@ -238,8 +245,26 @@ def decodage_options(list_octets):
     liste_entete=obtenir_des_chiffres_voulus(list_octets,14,20)
     liste_entete_2=list_octet_to_chiffre(liste_entete)
     ihl=int(liste_entete_2[1],16)
-    if(4*ihl !=20):
-        print("Option")
+    if(4*ihl > 20):
+        trame=list_octet_to_chiffre(list_octets)
+        reste_trame=trame[68:]
+        t1=reste_trame[0]+""+reste_trame[1]
+        print("\t Option"+options[t1])
+        while(t1 != "00"):
+            if(t1 != "00" and t1!="01"):
+                l1=reste_trame[2]+""+reste_trame[3]
+                longeur_val=int(l1,16)-2
+                print("\t \t Length: "+str(longeur_val+2)+" bytes.")
+                valeur=""
+                for i in range(4,4+longeur_val*2-1,2):
+                    valeur=valeur+""+reste_trame[i]+reste_trame[i+1]
+                print("\t Value : "+valeur)
+                del reste_trame[:4+longeur_val*2]
+            t1=reste_trame[0]+""+reste_trame[1]
+        for ind in(i for i,e in enumerate(trame) if e==reste_trame[0]):
+            if(trame[ind:ind+len(reste_trame)]==reste_trame):
+                return ind+len(reste_trame)
+            
     
     return 68
     
@@ -261,6 +286,7 @@ def main():
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 decodage_entete_ethernet(liste_octets)
                 decodage_entete_ip(liste_octets)
+                suite=decodage_options(liste_octets)
                 print("-------------------------------------")
                 i=i+1
 
