@@ -90,7 +90,8 @@ def decodage_options(list_octets):
         reste_trame=trame[68:]
         t1=reste_trame[0]+""+reste_trame[1]
         print("\t Option"+options[t1])
-        while(int(t1,16) != 0):
+        longeur_val=6
+        while(int(t1,16) != 0 and longeur_val>4):
             if(t1 != "00" and t1 != "01"):
                 l1=reste_trame[2]+""+reste_trame[3]
                 longeur_val=int(l1,16)-2

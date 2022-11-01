@@ -1,22 +1,22 @@
-Frame 1: 698 bytes (5584 bits).
+Frame 1: 696 bytes (5568 bits).
 Ethernet 2
-	 Adresse de destination : 01:00:5e:7f:ff:fa
-	 Adresse de la source : c8:b2:9b:64:61:a8
+	 Adresse de destination : c8:b2:9b:64:61:a8
+	 Adresse de la source : 3a:2b:8b:38:0c:f8
 	 Type IP Datagram(0x0800)
 IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 684
-	 Identification : 6c80
+	 Total Lenght : 682
+	 Identification : 4925
 	 Flags
 	 	 Reserved bit : 0
 	 	 Don't fragment : 0
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 1
+	 Time To Live : 255
 	 Protocol : UDP(17)
-	 Header Checksum unverified : 0000
-	 Source Adress : 10.188.175.213
-	 Destination Adress : 239.255.255.250
+	 Header Checksum unverified : 9466
+	 Source Adress : 10.188.239.255
+	 Destination Adress : 224.0.0.251
 -------------------------------------

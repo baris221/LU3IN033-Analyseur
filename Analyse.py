@@ -15,6 +15,9 @@ import Ip
 #print(hexa_to_binaire("AB456"))
 
 def main():
+    if(len(sys.argv)!=2):
+        print("Error")
+        return
     nom_fic=sys.argv[1]
     li=Utils.lire_trace(nom_fic)
     i=1
