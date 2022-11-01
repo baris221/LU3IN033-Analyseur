@@ -18,6 +18,7 @@ def main():
     nom_fic=sys.argv[1]
     li=Utils.lire_trace(nom_fic)
     i=1
+    list_suite=[]
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -30,7 +31,11 @@ def main():
                 Ethernet.decodage_entete_ethernet(liste_octets)
                 Ip.decodage_entete_ip(liste_octets)
                 suite=Ip.decodage_options(liste_octets)
+                list_suite.append(suite)
                 print("-------------------------------------")
                 i=i+1
+    print(list_suite)
+
 
 main()
+    

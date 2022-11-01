@@ -14,7 +14,7 @@ protocoles_ip = {
 	"9" : "IGP",
 	"17" : "UDP",
 	"36" : "XTP",
-	"46" : "RSVP"
+	"46" : "RSVP",
 }
 def decodage_entete_ip(list_octets):
     """list[int]->void"""
@@ -73,6 +73,7 @@ options = {
 	"1" : "NOP",
 	"7" : "RR",
 	"68" : "TS",
+    "94" : "Route Alert",
 	"131" : "LSR",
 	"137" : "SSR"
 }   
@@ -89,17 +90,23 @@ def decodage_options(list_octets):
         reste_trame=trame[68:]
         t1=reste_trame[0]+""+reste_trame[1]
         print("\t Option"+options[t1])
-        while(t1 != "00"):
-            if(t1 != "00" and t1!="01"):
+        while(int(t1,16) != 0):
+            if(t1 != "00" and t1 != "01"):
                 l1=reste_trame[2]+""+reste_trame[3]
                 longeur_val=int(l1,16)-2
                 print("\t \t Length: "+str(longeur_val+2)+" bytes.")
                 valeur=""
                 for i in range(4,4+longeur_val*2-1,2):
                     valeur=valeur+""+reste_trame[i]+reste_trame[i+1]
-                print("\t Value : "+valeur)
+                print("\t \t Value : "+valeur)
+                print(longeur_val)
+                print(4+longeur_val*2)
                 del reste_trame[:4+longeur_val*2]
+                
+                
             t1=reste_trame[0]+""+reste_trame[1]
+            
+            
         for ind in(i for i,e in enumerate(trame) if e==reste_trame[0]):
             if(trame[ind:ind+len(reste_trame)]==reste_trame):
                 return ind+len(reste_trame)
