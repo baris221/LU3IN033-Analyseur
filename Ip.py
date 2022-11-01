@@ -99,8 +99,6 @@ def decodage_options(list_octets):
                 for i in range(4,4+longeur_val*2-1,2):
                     valeur=valeur+""+reste_trame[i]+reste_trame[i+1]
                 print("\t \t Value : "+valeur)
-                print(longeur_val)
-                print(4+longeur_val*2)
                 del reste_trame[:4+longeur_val*2]
                 
                 
