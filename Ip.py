@@ -112,3 +112,24 @@ def decodage_options(list_octets):
             
     
     return 68
+
+
+
+
+
+def getAdressIP(list_octets):
+    liste_entete=Utils.obtenir_des_chiffres_voulus(list_octets,14,20)
+    liste_entete_2=Utils.list_octet_to_chiffre(liste_entete)
+    adress_source=""
+    for i in range(24,31,2):
+        adress_source=adress_source+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
+    adress_source=adress_source.lstrip(".")
+    
+    adress_dest=""
+    for i in range(32,39,2):
+        adress_dest=adress_dest+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
+    adress_dest=adress_dest.lstrip(".")
+    
+    return(adress_source,adress_dest)
+
+    
