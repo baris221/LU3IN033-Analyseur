@@ -67,6 +67,8 @@ def decodage_entete_ip(list_octets):
         adress_dest=adress_dest+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
     adress_dest=adress_dest.lstrip(".")
     print("\t Destination Adress : "+adress_dest)
+    
+    return int(protocol,16)
         
 options = {
 	"0" : "EOOL",

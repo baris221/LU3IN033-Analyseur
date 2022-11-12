@@ -1,24 +1,42 @@
-Frame 1: 60 bytes (480 bits).
+Frame 1: 56 bytes (448 bits).
 Ethernet 2
 	 Adresse de destination : c8:b2:9b:64:61:a8
-	 Adresse de la source : c0:b5:d7:ab:f9:01
+	 Adresse de la source : 50:9a:4c:68:3f:e0
 	 Type IP Datagram(0x0800)
 IPV4
 	 Version : 4
-	 IHL : 6 octets 0x(6)
+	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 32
-	 Identification : 2805
+	 Total Lenght : 40
+	 Identification : 5ba1
 	 Flags
 	 	 Reserved bit : 0
 	 	 Don't fragment : 0
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 1
-	 Protocol : IGMP(2)
-	 Header Checksum unverified : fe8c
-	 Source Adress : 10.188.3.144
-	 Destination Adress : 239.255.255.250
-	 OptionRoute Alert
-	 	 Length: 4 bytes.
-	 	 Value : 0000
+	 Time To Live : 123
+	 Protocol : TCP(6)
+	 Header Checksum unverified : e81e
+	 Source Adress : 142.250.178.132
+	 Destination Adress : 10.188.175.213
+Transmission control protocol
+	 Source port: 443
+	 Destination port: 61189
+	 Sequence Number (raw) :3617838886
+	 Acknowledgement Number (raw) :2003912244
+	 Header Length :5
+	 Flags :010
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :0
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :801
+	 Checksum : 0x(5372)
+	 Urgent pointer :0
+-------------------------------------

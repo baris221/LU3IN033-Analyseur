@@ -10,6 +10,7 @@ import Ethernet
 import Utils
 import Ip
 import Udp
+import Tcp
     
 
 
@@ -32,11 +33,14 @@ def main():
                 longeur_list=len(liste_octets)
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 Ethernet.decodage_entete_ethernet(liste_octets)
-                Ip.decodage_entete_ip(liste_octets)
+                transportation=Ip.decodage_entete_ip(liste_octets)
                 suite=Ip.decodage_options(liste_octets)
                 if(suite!=68):
                     continue
-                udp_values=Udp.decodage_entete_udp(liste_octets,suite)
+                if(transportation==17):
+                    udp_values=Udp.decodage_entete_udp(liste_octets,suite)
+                if(transportation==6):
+                    Tcp.decodage_TCP_entete(liste_octets,suite)
                 
                 print("-------------------------------------")
                 i=i+1
