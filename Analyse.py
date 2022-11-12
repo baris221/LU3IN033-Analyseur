@@ -34,6 +34,8 @@ def main():
                 Ethernet.decodage_entete_ethernet(liste_octets)
                 Ip.decodage_entete_ip(liste_octets)
                 suite=Ip.decodage_options(liste_octets)
+                if(suite!=68):
+                    continue
                 udp_values=Udp.decodage_entete_udp(liste_octets,suite)
                 
                 print("-------------------------------------")
