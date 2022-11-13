@@ -1,42 +1,104 @@
-Frame 1: 56 bytes (448 bits).
+Frame 1: 487 bytes (3896 bits).
+
+
 Ethernet 2
-	 Adresse de destination : c8:b2:9b:64:61:a8
-	 Adresse de la source : 50:9a:4c:68:3f:e0
+	 Adresse de destination : 50:9a:4c:68:3f:e0
+	 Adresse de la source : c8:b2:9b:64:61:a8
 	 Type IP Datagram(0x0800)
+
+
 IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 40
-	 Identification : 5ba1
+	 Total Lenght : 473
+	 Identification : cb9e
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 0
+	 	 Don't fragment : 1
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 123
+	 Time To Live : 128
 	 Protocol : TCP(6)
-	 Header Checksum unverified : e81e
-	 Source Adress : 142.250.178.132
-	 Destination Adress : 10.188.175.213
-Transmission control protocol
-	 Source port: 443
-	 Destination port: 61189
-	 Sequence Number (raw) :3617838886
-	 Acknowledgement Number (raw) :2003912244
+	 Header Checksum unverified : 0000
+	 Source Adress : 10.188.175.213
+	 Destination Adress : 216.58.214.174
+
+
+TCP (Transmission control protocol)
+	 Source port: 54422
+	 Destination port: 443
+	 Sequence number :1
+	 Sequence Number (raw) :2292611397
+	 Acknowledgement number :1
+	 Acknowledgement Number (raw) :1303054743
 	 Header Length :5
-	 Flags :010
+	 Flags :018
 	 	 Reserved 000
 	 	 Nonce :0
 	 	 Congestion Window Reduced (CWR) :0
 	 	 ECN-Echo :0
 	 	 Urgent :0
 	 	 Acknowledgement :1
-	 	 Push :0
+	 	 Push :1
 	 	 Reset :0
 	 	 Syn :0
 	 	 Fin :0
-	 Window :801
-	 Checksum : 0x(5372)
+	 Window :512
+	 Checksum : 0x(6b46)
 	 Urgent pointer :0
+
+
+-------------------------------------
+Frame 2: 10912 bytes (87296 bits).
+
+
+Ethernet 2
+	 Adresse de destination : 50:9a:4c:68:3f:e0
+	 Adresse de la source : c8:b2:9b:64:61:a8
+	 Type IP Datagram(0x0800)
+
+
+IPV4
+	 Version : 4
+	 IHL : 5 octets 0x(5)
+	 Type of Service : 00
+	 Total Lenght : 0
+	 Identification : cb9f
+	 Flags
+	 	 Reserved bit : 0
+	 	 Don't fragment : 1
+	 	 More Fragment : 0
+	 Fragment offset : 0x0(0)
+	 Time To Live : 128
+	 Protocol : TCP(6)
+	 Header Checksum unverified : 0000
+	 Source Adress : 10.188.175.213
+	 Destination Adress : 216.58.214.174
+
+
+TCP (Transmission control protocol)
+	 Source port: 54422
+	 Destination port: 443
+	 Sequence number :434
+	 Sequence Number (raw) :2292611830
+	 Acknowledgement number :1
+	 Acknowledgement Number (raw) :1303054743
+	 Header Length :5
+	 Flags :018
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :1
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :512
+	 Checksum : 0x(6981)
+	 Urgent pointer :0
+
+
 -------------------------------------

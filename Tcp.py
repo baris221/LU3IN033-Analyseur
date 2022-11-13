@@ -6,20 +6,22 @@ Created on Sat Nov 12 17:09:48 2022
 """
 import Utils
 
-def decodage_TCP_entete(liste_octets,suite):
+def decodage_TCP_entete(liste_octets,suite,seq,awk):
     liste_entete=Utils.list_octet_to_chiffre(liste_octets)
     liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
     
-    print("Transmission control protocol")
+    print("TCP (Transmission control protocol)")
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
     print("\t Source port: " + str(int(src_port, 16)))
 	
     dest_port = liste_entete_2[4] + "" + liste_entete_2[5] + "" + liste_entete_2[6] + "" + liste_entete_2[7]
     print("\t Destination port: " + str(int(dest_port, 16)))
     
+    print("\t Sequence number :"+str(seq))
     seq_number=liste_entete_2[8] + "" + liste_entete_2[9] + "" + liste_entete_2[10] + "" + liste_entete_2[11]+""+liste_entete_2[12] + "" + liste_entete_2[13] + "" + liste_entete_2[14] + "" + liste_entete_2[15]
     print("\t Sequence Number (raw) :"+str(int(seq_number,16)))
     
+    print("\t Acknowledgement number :"+str(awk))
     ack_number=liste_entete_2[16] + "" + liste_entete_2[17] + "" + liste_entete_2[18] + "" + liste_entete_2[19]+""+liste_entete_2[20] + "" + liste_entete_2[21] + "" + liste_entete_2[22] + "" + liste_entete_2[23]
     print("\t Acknowledgement Number (raw) :"+str(int(ack_number,16)))
     
