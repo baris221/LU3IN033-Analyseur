@@ -54,19 +54,19 @@ def decodage_entete_ip(list_octets):
     print("\t Protocol : "+protocoles_ip[str(int(protocol,16))]+"("+str(int(protocol,16))+")")
     
     checksum=liste_entete_2[20]+""+liste_entete_2[21]+""+liste_entete_2[22]+""+liste_entete_2[23]
-    print("\t Header Checksum unverified : "+checksum)
+    print("\t Header Checksum [Unverified] : "+checksum)
     
     adress_source=""
     for i in range(24,31,2):
         adress_source=adress_source+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
     adress_source=adress_source.lstrip(".")
-    print("\t Source Adress : "+adress_source)
+    print("\t Source Address : "+adress_source)
     
     adress_dest=""
     for i in range(32,39,2):
         adress_dest=adress_dest+"."+str(int(str(liste_entete_2[i])+str(liste_entete_2[i+1]),16))
     adress_dest=adress_dest.lstrip(".")
-    print("\t Destination Adress : "+adress_dest)
+    print("\t Destination Address : "+adress_dest)
     
     return int(protocol,16)
         

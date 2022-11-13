@@ -1,9 +1,9 @@
-Frame 1: 487 bytes (3896 bits).
+Frame 1: 221 bytes (1768 bits).
 
 
 Ethernet 2
-	 Adresse de destination : 50:9a:4c:68:3f:e0
-	 Adresse de la source : c8:b2:9b:64:61:a8
+	 Adresse de destination : 00:20:ed:87:fd:e6
+	 Adresse de la source : 00:07:e9:0c:90:62
 	 Type IP Datagram(0x0800)
 
 
@@ -11,51 +11,34 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 473
-	 Identification : cb9e
+	 Total Lenght : 207
+	 Identification : 2a2d
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 1
+	 	 Don't fragment : 0
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 128
-	 Protocol : TCP(6)
-	 Header Checksum unverified : 0000
-	 Source Adress : 10.188.175.213
-	 Destination Adress : 216.58.214.174
+	 Time To Live : 63
+	 Protocol : UDP(17)
+	 Header Checksum [Unverified] : bfae
+	 Source Address : 132.227.74.2
+	 Destination Address : 132.227.61.122
 
 
-TCP (Transmission control protocol)
-	 Source port: 54422
-	 Destination port: 443
-	 Sequence number :1
-	 Sequence Number (raw) :2292611397
-	 Acknowledgement number :1
-	 Acknowledgement Number (raw) :1303054743
-	 Header Length :5
-	 Flags :018
-	 	 Reserved 000
-	 	 Nonce :0
-	 	 Congestion Window Reduced (CWR) :0
-	 	 ECN-Echo :0
-	 	 Urgent :0
-	 	 Acknowledgement :1
-	 	 Push :1
-	 	 Reset :0
-	 	 Syn :0
-	 	 Fin :0
-	 Window :512
-	 Checksum : 0x(6b46)
-	 Urgent pointer :0
+User Datagram Protocol (UDP)
+	  Source port: 53
+	  Destination port: 34053
+	  Length: 187
+	  Checksum: 0xa13b
 
 
 -------------------------------------
-Frame 2: 10912 bytes (87296 bits).
+Frame 2: 342 bytes (2736 bits).
 
 
 Ethernet 2
-	 Adresse de destination : 50:9a:4c:68:3f:e0
-	 Adresse de la source : c8:b2:9b:64:61:a8
+	 Adresse de destination : ff:ff:ff:ff:ff:ff
+	 Adresse de la source : 00:1c:c0:e8:23:21
 	 Type IP Datagram(0x0800)
 
 
@@ -63,42 +46,25 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 0
-	 Identification : cb9f
+	 Total Lenght : 328
+	 Identification : c872
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 1
+	 	 Don't fragment : 0
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
 	 Time To Live : 128
-	 Protocol : TCP(6)
-	 Header Checksum unverified : 0000
-	 Source Adress : 10.188.175.213
-	 Destination Adress : 216.58.214.174
+	 Protocol : UDP(17)
+	 Header Checksum [Unverified] : 7133
+	 Source Address : 0.0.0.0
+	 Destination Address : 255.255.255.255
 
 
-TCP (Transmission control protocol)
-	 Source port: 54422
-	 Destination port: 443
-	 Sequence number :434
-	 Sequence Number (raw) :2292611830
-	 Acknowledgement number :1
-	 Acknowledgement Number (raw) :1303054743
-	 Header Length :5
-	 Flags :018
-	 	 Reserved 000
-	 	 Nonce :0
-	 	 Congestion Window Reduced (CWR) :0
-	 	 ECN-Echo :0
-	 	 Urgent :0
-	 	 Acknowledgement :1
-	 	 Push :1
-	 	 Reset :0
-	 	 Syn :0
-	 	 Fin :0
-	 Window :512
-	 Checksum : 0x(6981)
-	 Urgent pointer :0
+User Datagram Protocol (UDP)
+	  Source port: 68
+	  Destination port: 67
+	  Length: 308
+	  Checksum: 0xb2e3
 
 
 -------------------------------------

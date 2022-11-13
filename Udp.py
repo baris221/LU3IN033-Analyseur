@@ -12,7 +12,7 @@ def decodage_entete_udp(liste_octets,suite):
     liste_entete=Utils.list_octet_to_chiffre(liste_octets)
     liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,16)
     
-    print(" User Datagram Protocol (UDP)")
+    print("User Datagram Protocol (UDP)")
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
     print("\t  Source port: " + str(int(src_port, 16)))
 	
