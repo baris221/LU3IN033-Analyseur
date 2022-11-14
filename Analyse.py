@@ -25,7 +25,7 @@ def main():
     i=1
     seq=1
     ack=1
-    ex_longeur=0
+    adresse_ip_ex=("","")
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -43,24 +43,30 @@ def main():
                 print("\n")
                 if(suite!=68):
                     continue
+                #udp
                 if(transportation==17):
                     udp_values=Udp.decodage_entete_udp(liste_octets,suite)
+                    seq=1
+                    ack=1
+                #tcp
                 if(transportation==6):
+                    adresse_ip=Ip.getAdressIP(liste_octets)
                     Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    if(adresse_ip_ex[0]==adresse_ip[1] and adresse_ip_ex[1]==adresse_ip[0] ):
+                        seq,ack=ack,seq
+                    
                 
-                if not(longeur_list==54 and longeur_list==56):
-                    seq=seq+longeur_list-54
-                else:
-                    ack=ack+longeur_list-54
+                    if longeur_list>56:
+                        ack=ack+longeur_list-54
+                    else:
+                        seq=seq+longeur_list-54
                 
-                if(not(ex_longeur==0)and ((ex_longeur>56 and longeur_list<=56)or(ex_longeur<=56 and longeur_list>56))):
-                    seq,ack=ack,seq
+                    adresse_ip_ex=adresse_ip
                 
                 print("\n")
                 
                 print("-------------------------------------")
                 i=i+1
-                ex_longeur=longeur_list
 
 
 

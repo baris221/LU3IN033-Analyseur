@@ -1,9 +1,9 @@
-Frame 1: 221 bytes (1768 bits).
+Frame 1: 97 bytes (776 bits).
 
 
 Ethernet 2
-	 Adresse de destination : 00:20:ed:87:fd:e6
-	 Adresse de la source : 00:07:e9:0c:90:62
+	 Adresse de destination : 50:9a:4c:68:3f:e0
+	 Adresse de la source : c8:b2:9b:64:61:a8
 	 Type IP Datagram(0x0800)
 
 
@@ -11,60 +11,146 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 207
-	 Identification : 2a2d
+	 Total Lenght : 83
+	 Identification : 6ae5
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 0
-	 	 More Fragment : 0
-	 Fragment offset : 0x0(0)
-	 Time To Live : 63
-	 Protocol : UDP(17)
-	 Header Checksum [Unverified] : bfae
-	 Source Address : 132.227.74.2
-	 Destination Address : 132.227.61.122
-
-
-User Datagram Protocol (UDP)
-	  Source port: 53
-	  Destination port: 34053
-	  Length: 187
-	  Checksum: 0xa13b
-
-
--------------------------------------
-Frame 2: 342 bytes (2736 bits).
-
-
-Ethernet 2
-	 Adresse de destination : ff:ff:ff:ff:ff:ff
-	 Adresse de la source : 00:1c:c0:e8:23:21
-	 Type IP Datagram(0x0800)
-
-
-IPV4
-	 Version : 4
-	 IHL : 5 octets 0x(5)
-	 Type of Service : 00
-	 Total Lenght : 328
-	 Identification : c872
-	 Flags
-	 	 Reserved bit : 0
-	 	 Don't fragment : 0
+	 	 Don't fragment : 1
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
 	 Time To Live : 128
-	 Protocol : UDP(17)
-	 Header Checksum [Unverified] : 7133
-	 Source Address : 0.0.0.0
-	 Destination Address : 255.255.255.255
+	 Protocol : TCP(6)
+	 Header Checksum [Unverified] : 0000
+	 Source Address : 10.188.175.213
+	 Destination Address : 35.186.224.47
 
 
-User Datagram Protocol (UDP)
-	  Source port: 68
-	  Destination port: 67
-	  Length: 308
-	  Checksum: 0xb2e3
+TCP (Transmission control protocol)
+	 Source port: 64058
+	 Destination port: 443
+	 Sequence number :1
+	 Sequence Number (raw) :1446592579
+	 Acknowledgement number :1
+	 Acknowledgement Number (raw) :3303150603
+	 Header Length :5
+	 Flags :018
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :1
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :512
+	 Checksum : 0x(bec0)
+	 Urgent pointer :0
+
+
+-------------------------------------
+Frame 2: 94 bytes (752 bits).
+
+
+Ethernet 2
+	 Adresse de destination : c8:b2:9b:64:61:a8
+	 Adresse de la source : 50:9a:4c:68:3f:e0
+	 Type IP Datagram(0x0800)
+
+
+IPV4
+	 Version : 4
+	 IHL : 5 octets 0x(5)
+	 Type of Service : 00
+	 Total Lenght : 80
+	 Identification : 5295
+	 Flags
+	 	 Reserved bit : 0
+	 	 Don't fragment : 0
+	 	 More Fragment : 0
+	 Fragment offset : 0x0(0)
+	 Time To Live : 123
+	 Protocol : TCP(6)
+	 Header Checksum [Unverified] : 2e98
+	 Source Address : 35.186.224.47
+	 Destination Address : 10.188.175.213
+
+
+TCP (Transmission control protocol)
+	 Source port: 443
+	 Destination port: 64058
+	 Sequence number :1
+	 Sequence Number (raw) :3303150603
+	 Acknowledgement number :44
+	 Acknowledgement Number (raw) :1446592622
+	 Header Length :5
+	 Flags :018
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :1
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :270
+	 Checksum : 0x(2aba)
+	 Urgent pointer :0
+
+
+-------------------------------------
+Frame 3: 54 bytes (432 bits).
+
+
+Ethernet 2
+	 Adresse de destination : 50:9a:4c:68:3f:e0
+	 Adresse de la source : c8:b2:9b:64:61:a8
+	 Type IP Datagram(0x0800)
+
+
+IPV4
+	 Version : 4
+	 IHL : 5 octets 0x(5)
+	 Type of Service : 00
+	 Total Lenght : 40
+	 Identification : 6ae6
+	 Flags
+	 	 Reserved bit : 0
+	 	 Don't fragment : 1
+	 	 More Fragment : 0
+	 Fragment offset : 0x0(0)
+	 Time To Live : 128
+	 Protocol : TCP(6)
+	 Header Checksum [Unverified] : 0000
+	 Source Address : 10.188.175.213
+	 Destination Address : 35.186.224.47
+
+
+TCP (Transmission control protocol)
+	 Source port: 64058
+	 Destination port: 443
+	 Sequence number :44
+	 Sequence Number (raw) :1446592622
+	 Acknowledgement number :41
+	 Acknowledgement Number (raw) :3303150643
+	 Header Length :5
+	 Flags :010
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :0
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :512
+	 Checksum : 0x(be95)
+	 Urgent pointer :0
 
 
 -------------------------------------
