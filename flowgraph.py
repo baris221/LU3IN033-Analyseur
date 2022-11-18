@@ -10,6 +10,7 @@ import Utils
 import Ip
 import sys
 import Udp
+import Tcp
 
 liste=[0,1]
 liste1=[0,1,2]
@@ -18,7 +19,7 @@ t=tk.Tk()
 t.title("Wireshark Flow Graph")
 t.config(background="#76FF7B")
 
-nom_fic="deux-trames-correctes.trame"
+nom_fic="TCP_3.txt"
 li=Utils.lire_trace(nom_fic)
 for frame in li:
     fr=tk.Frame(t,bg="#76FF7B")

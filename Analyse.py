@@ -38,7 +38,8 @@ def main():
                 print("\n")
                 Ethernet.decodage_entete_ethernet(liste_octets)
                 print("\n")
-                transportation=Ip.decodage_entete_ip(liste_octets)
+                Ip.decodage_entete_ip(liste_octets)
+                transportation=Ip.getPort(liste_octets)
                 suite=Ip.decodage_options(liste_octets)
                 print("\n")
                 if(suite!=68):

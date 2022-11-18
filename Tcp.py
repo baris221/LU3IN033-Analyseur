@@ -52,7 +52,16 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     print("\t Urgent pointer :"+str(int(urgent_pointer,16)))
     
     
+def get_port(liste_octets):
     
+    liste_entete=Utils.list_octet_to_chiffre(liste_octets)
+    liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,68,40)
     
+    src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
+    src_port= str(int(src_port, 16))
+	
+    dest_port = liste_entete_2[4] + "" + liste_entete_2[5] + "" + liste_entete_2[6] + "" + liste_entete_2[7]
+    dest_port=str(int(dest_port, 16))   
     
+    return(src_port,dest_port)
     

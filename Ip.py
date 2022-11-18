@@ -68,7 +68,6 @@ def decodage_entete_ip(list_octets):
     adress_dest=adress_dest.lstrip(".")
     print("\t Destination Address : "+adress_dest)
     
-    return int(protocol,16)
         
 options = {
 	"0" : "EOOL",
@@ -134,4 +133,9 @@ def getAdressIP(list_octets):
     
     return(adress_source,adress_dest)
 
+def getPort(list_octets):
+    liste_entete=Utils.obtenir_des_chiffres_voulus(list_octets,14,20)
+    liste_entete_2=Utils.list_octet_to_chiffre(liste_entete)
+    protocol=liste_entete_2[18]+""+liste_entete_2[19]
+    return int(protocol,16)
     
