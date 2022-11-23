@@ -26,6 +26,7 @@ def main():
     seq=1
     ack=1
     adresse_ip_ex=("","")
+    liste_seq_awk=[]
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -53,6 +54,7 @@ def main():
                 if(transportation==6):
                     adresse_ip=Ip.getAdressIP(liste_octets)
                     Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    liste_seq_awk.append((seq,ack))
                     if(adresse_ip_ex[0]==adresse_ip[1] and adresse_ip_ex[1]==adresse_ip[0] ):
                         seq,ack=ack,seq
                     

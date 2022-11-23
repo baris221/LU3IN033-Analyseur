@@ -14,22 +14,21 @@ import Tcp
 
 liste=[0,1]
 liste1=[0,1,2]
-t=tk.Tk()
 
-t.title("Wireshark Flow Graph")
-t.config(background="#76FF7B")
 
-nom_fic="TCP_3.txt"
-li=Utils.lire_trace(nom_fic)
-for frame in li:
-    fr=tk.Frame(t,bg="#76FF7B")
-    liste_octets=[]
-    for line in frame:
-        for byte in line:
-            liste_octets.append(byte)
+
+
             
+
+def flowgraph(liste_octets,t):
+    liste=[0,1]
+    liste1=[0,1,2]
+    fr=tk.Frame(t,bg="#76FF7B")
     adresses_ip=Ip.getAdressIP(liste_octets)
-    adresses_port=Udp.get_Port(liste_octets)
+    if(adresses_ip==17):
+        adresses_port=Udp.get_Port(liste_octets)
+    else:
+        adresses_port=Tcp.get_Port(liste_octets)
 
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
 
@@ -46,7 +45,7 @@ for frame in li:
                 tm=tm+">"
             if j==len(liste1)-1:
                 tm=ip_list[3]
-            if j==0 and i==0:
+            if j==0 and i==0 and not(j==len(liste1)-1):
                 tm=ip_list[0]
             if j==len(liste1)-1 and i==0:
                 tm=ip_list[1]
@@ -55,4 +54,20 @@ for frame in li:
         fr1.pack(side="left")
 
     fr.pack(side="top",expand=True)
-t.mainloop()
+    
+def showgraph(path_to_file):    
+
+    li=Utils.lire_trace(path_to_file)
+    t=tk.Tk()
+    t.title("Wireshark Flow Graph")
+    t.config(background="#76FF7B")
+    for frame in li:
+        liste_octets=[]
+        for line in frame:
+            for byte in line:
+                liste_octets.append(byte)
+        flowgraph(liste_octets,t)
+
+    t.mainloop()
+    
+showgraph("TCP_3.txt")
