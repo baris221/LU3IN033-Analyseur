@@ -11,6 +11,7 @@ import Utils
 import Ip
 import Udp
 import Tcp
+import flowgraph
     
 
 
@@ -26,7 +27,7 @@ def main():
     seq=1
     ack=1
     adresse_ip_ex=("","")
-    liste_seq_awk=[]
+    liste_seq_ack=[] 
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -53,12 +54,11 @@ def main():
                 #tcp
                 if(transportation==6):
                     adresse_ip=Ip.getAdressIP(liste_octets)
-                    Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
-                    liste_seq_awk.append((seq,ack))
+                    window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    liste_seq_ack.append((seq,ack,window))
                     if(adresse_ip_ex[0]==adresse_ip[1] and adresse_ip_ex[1]==adresse_ip[0] ):
                         seq,ack=ack,seq
                     
-                
                     if longeur_list>56:
                         ack=ack+longeur_list-54
                     else:
@@ -70,6 +70,7 @@ def main():
                 
                 print("-------------------------------------")
                 i=i+1
+    flowgraph.showgraph(nom_fic,liste_seq_ack)
 
 
 

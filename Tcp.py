@@ -51,6 +51,8 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     urgent_pointer=liste_entete_2[36] + "" + liste_entete_2[37] + "" + liste_entete_2[38] + "" + liste_entete_2[39]
     print("\t Urgent pointer :"+str(int(urgent_pointer,16)))
     
+    return int(window,16)
+    
     
 def get_Port(liste_octets):
     

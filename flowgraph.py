@@ -20,7 +20,7 @@ liste1=[0,1,2]
 
             
 
-def flowgraph(liste_octets,t):
+def flowgraph(liste_octets,t,seq_ack):
     liste=[0,1]
     liste1=[0,1,2]
     fr=tk.Frame(t,bg="#76FF7B")
@@ -42,7 +42,7 @@ def flowgraph(liste_octets,t):
             if i==0:
                 tm=" "
             if j==len(liste1)-2 and i!=0:
-                tm=tm+">"
+                tm=tm+"> \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
             if j==len(liste1)-1:
                 tm=ip_list[3]
             if j==0 and i==0 and not(j==len(liste1)-1):
@@ -55,19 +55,21 @@ def flowgraph(liste_octets,t):
 
     fr.pack(side="top",expand=True)
     
-def showgraph(path_to_file):    
+def showgraph(path_to_file,liste_seq_ack):    
 
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
     t.title("Wireshark Flow Graph")
     t.config(background="#76FF7B")
+    i=0
     for frame in li:
         liste_octets=[]
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        flowgraph(liste_octets,t)
+        flowgraph(liste_octets,t,liste_seq_ack[i])
+        i=i+1
 
     t.mainloop()
     
-showgraph("TCP_3.txt")
+#showgraph("TCP_3.txt")
