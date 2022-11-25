@@ -8,15 +8,19 @@ Created on Thu Nov 10 18:53:09 2022
 import tkinter as tk
 import Utils
 import Ip
-import sys
 import Udp
 import Tcp
+import tkinter.filedialog as fd
 
 liste=[0,1]
 liste1=[0,1,2]
 
 
-
+def save():
+    files = [('All Files', '*.*'), 
+             ('Python Files', '*.py'),
+             ('Text Document', '*.txt')]
+    file = fd.asksaveasfile(filetypes = files, defaultextension = files)
 
             
 
@@ -70,6 +74,8 @@ def showgraph(path_to_file,liste_seq_ack):
         flowgraph(liste_octets,t,liste_seq_ack[i])
         i=i+1
 
+    btn = tk.Button(t, text = 'Save', command = lambda : save())
+    btn.pack(side = "top", pady = 20)
     t.mainloop()
     
 #showgraph("TCP_3.txt")
