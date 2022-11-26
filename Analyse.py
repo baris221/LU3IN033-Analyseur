@@ -27,7 +27,8 @@ def main():
     seq=1
     ack=1
     adresse_ip_ex=("","")
-    liste_seq_ack=[] 
+    liste_seq_ack=[]
+    liste_protocol=[]
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -51,6 +52,7 @@ def main():
                     udp_values=Udp.decodage_entete_udp(liste_octets,suite)
                     seq=1
                     ack=1
+                    liste_protocol.append("UDP")
                 #tcp
                 if(transportation==6):
                     adresse_ip=Ip.getAdressIP(liste_octets)
@@ -65,12 +67,13 @@ def main():
                         seq=seq+longeur_list-54
                 
                     adresse_ip_ex=adresse_ip
+                    liste_protocol.append("TCP")
                 
                 print("\n")
                 
                 print("-------------------------------------")
                 i=i+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack)
+    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol)
 
 
 

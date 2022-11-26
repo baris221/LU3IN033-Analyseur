@@ -1,2 +1,5 @@
 Pour exécuter le programme lancez la commande suivante:
 python Analyseur.py <nom_fic>
+
+Si vous n'avez pas de tkinter
+pip install tk
