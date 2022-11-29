@@ -84,7 +84,6 @@ def Tcp_options(suite,liste_octets):
         print("\t Options:")
         trame=Utils.list_octet_to_chiffre(liste_octets)
         reste_trame=trame[108:]
-        print(reste_trame)
         #reste_trame=reste_trame[:(header_length-20)*2-1]
         t1=reste_trame[0]+""+reste_trame[1]
         reste_trame=reste_trame[2:]

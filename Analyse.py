@@ -53,6 +53,7 @@ def main():
                     seq=1
                     ack=1
                     liste_protocol.append("UDP")
+                    print("\n")
                 #tcp
                 if(transportation==6):
                     adresse_ip=Ip.getAdressIP(liste_octets)
@@ -65,7 +66,10 @@ def main():
                     adresse_ip_ex=adresse_ip
                     liste_protocol.append("TCP")
                 
-                print("\n")
+                    print("\n")
+                    ports=Tcp.get_Port(liste_octets)
+                    if(ports[0]=="80" or ports[1]=="80") and suite<len(liste_octets):
+                        print("HTTP")
                 
                 print("-------------------------------------")
                 i=i+1
