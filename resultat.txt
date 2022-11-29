@@ -1,9 +1,9 @@
-Frame 1: 66 bytes (528 bits).
+Frame 1: 74 bytes (592 bits).
 
 
 Ethernet 2
-	 Adresse de destination : c8:b2:9b:64:61:a8
-	 Adresse de la source : 50:9a:4c:68:3f:e0
+	 Adresse de destination : 00:00:00:00:00:00
+	 Adresse de la source : 00:00:00:00:00:00
 	 Type IP Datagram(0x0800)
 
 
@@ -11,46 +11,53 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 52
-	 Identification : 3f23
+	 Total Lenght : 60
+	 Identification : b957
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 0
+	 	 Don't fragment : 1
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 123
+	 Time To Live : 64
 	 Protocol : TCP(6)
-	 Header Checksum [Unverified] : ed66
-	 Source Address : 142.250.201.174
-	 Destination Address : 10.188.175.213
+	 Header Checksum [Unverified] : 8362
+	 Source Address : 127.0.0.1
+	 Destination Address : 127.0.0.1
 
 
 TCP (Transmission control protocol)
-	 Source port: 80
-	 Destination port: 63961
+	 Source port: 51518
+	 Destination port: 65432
 	 Sequence number :1
-	 Sequence Number (raw) :441183444
+	 Sequence Number (raw) :3615093216
 	 Acknowledgement number :1
-	 Acknowledgement Number (raw) :370084076
-	 Header Length :8
-	 Flags :010
+	 Acknowledgement Number (raw) :0
+	 Header Length :10
+	 Flags :002
 	 	 Reserved 000
 	 	 Nonce :0
 	 	 Congestion Window Reduced (CWR) :0
 	 	 ECN-Echo :0
 	 	 Urgent :0
-	 	 Acknowledgement :1
+	 	 Acknowledgement :0
 	 	 Push :0
 	 	 Reset :0
-	 	 Syn :0
+	 	 Syn :1
 	 	 Fin :0
-	 Window :256
-	 Checksum : 0x(0749)
+	 Window :65495
+	 Checksum : 0x(fe30)
 	 Urgent pointer :0
 	 Options:
+4
+	 	 Option :Maximum Segment Size
+	 	 Option :SACK permitted
+['0', '8', '0', 'a', '5', '6', '2', 'a', 'd', '7', '8', '3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '3', '0', '3', '0', 'a']
+	 	 Option :Timestamps
+['0', '1', '0', '3', '0', '3', '0', 'a']
 	 	 Option :No-operation
-	 	 Option :No-operation
-	 	 Option :SACK Selective
+['0', '3', '0', 'a']
+	 	 Option :WSOPT
+[]
 
 
 -------------------------------------

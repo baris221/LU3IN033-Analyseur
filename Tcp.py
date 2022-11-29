@@ -72,7 +72,8 @@ options={"00":"EOOL",
 "02":"Maximum Segment Size",
 "03":"WSOPT",
 "04":"SACK permitted",
-"05":"SACK Selective"}
+"05":"SACK Selective",
+"08":"Timestamps"}
 
 def Tcp_options(suite,liste_octets):
     liste_entete=Utils.list_octet_to_chiffre(liste_octets)
@@ -84,16 +85,24 @@ def Tcp_options(suite,liste_octets):
         print("\t Options:")
         trame=Utils.list_octet_to_chiffre(liste_octets)
         reste_trame=trame[108:]
-        #reste_trame=reste_trame[:(header_length-20)*2-1]
         t1=reste_trame[0]+""+reste_trame[1]
-        reste_trame=reste_trame[2:]
+        longeur_val=2
+        if t1!="00" and t1!="01":
+            longeur_val=int((reste_trame[2]+""+reste_trame[3]),16)
+            print(longeur_val)
+        reste_trame=reste_trame[2*longeur_val:]
         print("\t \t Option :"+options[t1])
-        while(reste_trame!= []):
+        while(reste_trame!= [] and t1!="00"):
             t1=reste_trame[0]+""+reste_trame[1]
             if t1 in options.keys():
                 print("\t \t Option :"+options[t1])
+            if t1!="01":
+                longeur_val=int((reste_trame[2]+""+reste_trame[3]),16)
+            else:
+                longeur_val=2
+            reste_trame=reste_trame[2*longeur_val:]
 
-            reste_trame=reste_trame[2:]
+
 
         return 108+((4*header_length)-20)*2
 
