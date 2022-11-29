@@ -66,4 +66,41 @@ def get_Port(liste_octets):
     dest_port=str(int(dest_port, 16))   
     
     return(src_port,dest_port)
+
+options={"00":"EOOL",
+"01":"No-operation",
+"02":"Maximum Segment Size",
+"03":"WSOPT",
+"04":"SACK permitted",
+"05":"SACK Selective"}
+
+def Tcp_options(suite,liste_octets):
+    liste_entete=Utils.list_octet_to_chiffre(liste_octets)
+    liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
+
+    header_length=int(liste_entete_2[24],16)
+    
+    if(4*header_length>20):
+        print("\t Options:")
+        trame=Utils.list_octet_to_chiffre(liste_octets)
+        reste_trame=trame[108:]
+        print(reste_trame)
+        #reste_trame=reste_trame[:(header_length-20)*2-1]
+        t1=reste_trame[0]+""+reste_trame[1]
+        reste_trame=reste_trame[2:]
+        print("\t \t Option :"+options[t1])
+        while(reste_trame!= []):
+            t1=reste_trame[0]+""+reste_trame[1]
+            if t1 in options.keys():
+                print("\t \t Option :"+options[t1])
+
+            reste_trame=reste_trame[2:]
+
+        return 108+((4*header_length)-20)*2
+
+    
+    else:
+        print("\t No option")
+        return 108
+
     

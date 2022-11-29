@@ -56,16 +56,12 @@ def main():
                 #tcp
                 if(transportation==6):
                     adresse_ip=Ip.getAdressIP(liste_octets)
-                    window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
-                    liste_seq_ack.append((seq,ack,window))
                     if(adresse_ip_ex[0]==adresse_ip[1] and adresse_ip_ex[1]==adresse_ip[0] ):
                         seq,ack=ack,seq
-                    
-                    if longeur_list>56:
-                        ack=ack+longeur_list-54
-                    else:
-                        seq=seq+longeur_list-54
-                
+                    window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    suite=Tcp.Tcp_options(suite,liste_octets)
+                    liste_seq_ack.append((seq,ack,window))                   
+                    seq=seq+int(longeur_list-suite/2)               
                     adresse_ip_ex=adresse_ip
                     liste_protocol.append("TCP")
                 
@@ -74,6 +70,7 @@ def main():
                 print("-------------------------------------")
                 i=i+1
     flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol)
+    print(suite)
 
 
 

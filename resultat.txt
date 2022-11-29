@@ -1,4 +1,4 @@
-Frame 1: 97 bytes (776 bits).
+Frame 1: 317 bytes (2536 bits).
 
 
 Ethernet 2
@@ -11,8 +11,8 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 83
-	 Identification : 6ae5
+	 Total Lenght : 303
+	 Identification : 35b5
 	 Flags
 	 	 Reserved bit : 0
 	 	 Don't fragment : 1
@@ -22,16 +22,16 @@ IPV4
 	 Protocol : TCP(6)
 	 Header Checksum [Unverified] : 0000
 	 Source Address : 10.188.175.213
-	 Destination Address : 35.186.224.47
+	 Destination Address : 18.235.199.211
 
 
 TCP (Transmission control protocol)
-	 Source port: 64058
+	 Source port: 64046
 	 Destination port: 443
 	 Sequence number :1
-	 Sequence Number (raw) :1446592579
+	 Sequence Number (raw) :3099206735
 	 Acknowledgement number :1
-	 Acknowledgement Number (raw) :3303150603
+	 Acknowledgement Number (raw) :2736273308
 	 Header Length :5
 	 Flags :018
 	 	 Reserved 000
@@ -45,12 +45,13 @@ TCP (Transmission control protocol)
 	 	 Syn :0
 	 	 Fin :0
 	 Window :512
-	 Checksum : 0x(bec0)
+	 Checksum : 0x(9671)
 	 Urgent pointer :0
+	 No option
 
 
 -------------------------------------
-Frame 2: 94 bytes (752 bits).
+Frame 2: 87 bytes (696 bits).
 
 
 Ethernet 2
@@ -63,27 +64,27 @@ IPV4
 	 Version : 4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
-	 Total Lenght : 80
-	 Identification : 5295
+	 Total Lenght : 73
+	 Identification : 64cf
 	 Flags
 	 	 Reserved bit : 0
-	 	 Don't fragment : 0
+	 	 Don't fragment : 1
 	 	 More Fragment : 0
 	 Fragment offset : 0x0(0)
-	 Time To Live : 123
+	 Time To Live : 240
 	 Protocol : TCP(6)
-	 Header Checksum [Unverified] : 2e98
-	 Source Address : 35.186.224.47
+	 Header Checksum [Unverified] : 908f
+	 Source Address : 18.235.199.211
 	 Destination Address : 10.188.175.213
 
 
 TCP (Transmission control protocol)
 	 Source port: 443
-	 Destination port: 64058
+	 Destination port: 64046
 	 Sequence number :1
-	 Sequence Number (raw) :3303150603
-	 Acknowledgement number :44
-	 Acknowledgement Number (raw) :1446592622
+	 Sequence Number (raw) :2736273308
+	 Acknowledgement number :264
+	 Acknowledgement Number (raw) :3099206998
 	 Header Length :5
 	 Flags :018
 	 	 Reserved 000
@@ -96,13 +97,67 @@ TCP (Transmission control protocol)
 	 	 Reset :0
 	 	 Syn :0
 	 	 Fin :0
-	 Window :270
-	 Checksum : 0x(2aba)
+	 Window :255
+	 Checksum : 0x(e254)
 	 Urgent pointer :0
+	 No option
 
 
 -------------------------------------
-Frame 3: 54 bytes (432 bits).
+Frame 3: 301 bytes (2408 bits).
+
+
+Ethernet 2
+	 Adresse de destination : c8:b2:9b:64:61:a8
+	 Adresse de la source : 50:9a:4c:68:3f:e0
+	 Type IP Datagram(0x0800)
+
+
+IPV4
+	 Version : 4
+	 IHL : 5 octets 0x(5)
+	 Type of Service : 00
+	 Total Lenght : 287
+	 Identification : 64d0
+	 Flags
+	 	 Reserved bit : 0
+	 	 Don't fragment : 1
+	 	 More Fragment : 0
+	 Fragment offset : 0x0(0)
+	 Time To Live : 240
+	 Protocol : TCP(6)
+	 Header Checksum [Unverified] : 8fb8
+	 Source Address : 18.235.199.211
+	 Destination Address : 10.188.175.213
+
+
+TCP (Transmission control protocol)
+	 Source port: 443
+	 Destination port: 64046
+	 Sequence number :34
+	 Sequence Number (raw) :2736273341
+	 Acknowledgement number :264
+	 Acknowledgement Number (raw) :3099206998
+	 Header Length :5
+	 Flags :018
+	 	 Reserved 000
+	 	 Nonce :0
+	 	 Congestion Window Reduced (CWR) :0
+	 	 ECN-Echo :0
+	 	 Urgent :0
+	 	 Acknowledgement :1
+	 	 Push :1
+	 	 Reset :0
+	 	 Syn :0
+	 	 Fin :0
+	 Window :255
+	 Checksum : 0x(73fb)
+	 Urgent pointer :0
+	 No option
+
+
+-------------------------------------
+Frame 4: 54 bytes (432 bits).
 
 
 Ethernet 2
@@ -116,7 +171,7 @@ IPV4
 	 IHL : 5 octets 0x(5)
 	 Type of Service : 00
 	 Total Lenght : 40
-	 Identification : 6ae6
+	 Identification : 35b6
 	 Flags
 	 	 Reserved bit : 0
 	 	 Don't fragment : 1
@@ -126,16 +181,16 @@ IPV4
 	 Protocol : TCP(6)
 	 Header Checksum [Unverified] : 0000
 	 Source Address : 10.188.175.213
-	 Destination Address : 35.186.224.47
+	 Destination Address : 18.235.199.211
 
 
 TCP (Transmission control protocol)
-	 Source port: 64058
+	 Source port: 64046
 	 Destination port: 443
-	 Sequence number :44
-	 Sequence Number (raw) :1446592622
-	 Acknowledgement number :41
-	 Acknowledgement Number (raw) :3303150643
+	 Sequence number :264
+	 Sequence Number (raw) :3099206998
+	 Acknowledgement number :281
+	 Acknowledgement Number (raw) :2736273588
 	 Header Length :5
 	 Flags :010
 	 	 Reserved 000
@@ -148,9 +203,10 @@ TCP (Transmission control protocol)
 	 	 Reset :0
 	 	 Syn :0
 	 	 Fin :0
-	 Window :512
-	 Checksum : 0x(be95)
+	 Window :511
+	 Checksum : 0x(956a)
 	 Urgent pointer :0
+	 No option
 
 
 -------------------------------------
