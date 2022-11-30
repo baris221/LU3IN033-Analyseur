@@ -11,6 +11,7 @@ import Utils
 import Ip
 import Udp
 import Tcp
+import Http
 import flowgraph
     
 
@@ -38,6 +39,10 @@ def main():
                     for byte in line:
                         liste_octets.append(byte)
                 longeur_list=len(liste_octets)
+                # Mes modifications
+                print("Coucou ici la gueule de liste octets:")
+                print(liste_octets[0:20])
+                # Fin de mes modifications"""
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 print("\n")
                 Ethernet.decodage_entete_ethernet(liste_octets)
@@ -71,6 +76,9 @@ def main():
                     print("\n")
                     if(adresse_port[0]=="80" or adresse_port[1]=="80") and suite<len(liste_octets):
                         print("HTTP")
+                        liste_protocol.append("HTTP")
+                if(liste_protocol[-1]=="HTTP"):
+                    Http.http_decoder(liste_octets[suite:])
                 
                 print("-------------------------------------")
                 i=i+1
