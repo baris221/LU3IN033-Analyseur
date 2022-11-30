@@ -86,7 +86,7 @@ def Tcp_options(suite,liste_octets):
         trame=Utils.list_octet_to_chiffre(liste_octets)
         reste_trame=trame[108:]
         t1=reste_trame[0]+""+reste_trame[1]
-        longeur_val=2
+        longeur_val=1
         if t1!="00" and t1!="01":
             longeur_val=int((reste_trame[2]+""+reste_trame[3]),16)
             print(longeur_val)
@@ -99,7 +99,7 @@ def Tcp_options(suite,liste_octets):
             if t1!="01":
                 longeur_val=int((reste_trame[2]+""+reste_trame[3]),16)
             else:
-                longeur_val=2
+                longeur_val=1
             reste_trame=reste_trame[2*longeur_val:]
 
 
