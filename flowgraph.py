@@ -25,7 +25,7 @@ def save():
 
             
 
-def flowgraph(liste_octets,t,seq_ack,protocol):
+def flowgraph(liste_octets,t,seq_ack,protocol,suite):
     liste=[0,1]
     liste1=[0,1,2,3]
     fr=tk.Frame(t,bg="#76FF7B")
@@ -33,7 +33,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol):
     if(adresses_ip==17):
         adresses_port=Udp.get_Port(liste_octets)
     else:
-        adresses_port=Tcp.get_Port(liste_octets)
+        adresses_port=Tcp.get_Port(liste_octets,suite)
 
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
 
@@ -62,7 +62,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol):
 
     fr.pack(side="top",expand=True)
     
-def showgraph(path_to_file,liste_seq_ack,liste_protocol):    
+def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite):    
 
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
@@ -74,7 +74,7 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol):
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i])
+        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i])
         i=i+1
 
     btn = tk.Button(t, text = 'Save', command = lambda : save())

@@ -26,9 +26,10 @@ def main():
     i=1
     seq=1
     ack=1
-    adresse_ip_ex=("","")
+    port_ex=("","")
     liste_seq_ack=[]
     liste_protocol=[]
+    liste_suite=[]
     with open("resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -44,6 +45,7 @@ def main():
                 Ip.decodage_entete_ip(liste_octets)
                 transportation=Ip.getPort(liste_octets)
                 suite=Ip.decodage_options(liste_octets)
+                liste_suite.append(suite)
                 print("\n")
                 if(suite!=68):
                     continue
@@ -56,24 +58,23 @@ def main():
                     print("\n")
                 #tcp
                 if(transportation==6):
-                    adresse_ip=Ip.getAdressIP(liste_octets)
-                    if(adresse_ip_ex[0]==adresse_ip[1] and adresse_ip_ex[1]==adresse_ip[0] ):
+                    adresse_port=Tcp.get_Port(liste_octets,suite)
+                    if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ):
                         seq,ack=ack,seq
                     window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
                     suite=Tcp.Tcp_options(suite,liste_octets)
                     liste_seq_ack.append((seq,ack,window))                   
                     seq=seq+int(longeur_list-suite/2)               
-                    adresse_ip_ex=adresse_ip
+                    port_ex=adresse_port
                     liste_protocol.append("TCP")
                 
                     print("\n")
-                    ports=Tcp.get_Port(liste_octets)
-                    if(ports[0]=="80" or ports[1]=="80") and suite<len(liste_octets):
+                    if(adresse_port[0]=="80" or adresse_port[1]=="80") and suite<len(liste_octets):
                         print("HTTP")
                 
                 print("-------------------------------------")
                 i=i+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol)
+    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite)
     print(suite)
 
 

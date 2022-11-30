@@ -54,10 +54,10 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     return int(window,16)
     
     
-def get_Port(liste_octets):
+def get_Port(liste_octets,suite):
     
     liste_entete=Utils.list_octet_to_chiffre(liste_octets)
-    liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,68,40)
+    liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
     
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
     src_port= str(int(src_port, 16))
