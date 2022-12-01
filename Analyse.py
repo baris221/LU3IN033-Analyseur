@@ -64,6 +64,9 @@ def main():
                 #tcp
                 if(transportation==6):
                     adresse_port=Tcp.get_Port(liste_octets,suite)
+                    if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
+                        seq=1
+                        ack=1
                     if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ):
                         seq,ack=ack,seq
                     window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
