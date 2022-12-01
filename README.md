@@ -8,4 +8,4 @@
     Exécuter la commande suivante:
     python Analyseur.py <nom_fic>
 
-_Des Trames pour tester l'efficacité de l'analyseur sont disponibles dans le fichier trames_tests_
+**Des Trames pour tester l'efficacité de l'analyseur sont disponibles dans le fichier trames_tests**
