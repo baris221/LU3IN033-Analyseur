@@ -14,16 +14,16 @@ def decodage_entete_udp(liste_octets,suite):
     
     print("User Datagram Protocol (UDP)")
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
-    print("\t  Source port: " + str(int(src_port, 16)))
+    print("\tSource port: " + str(int(src_port, 16)))
 	
     dest_port = liste_entete_2[4] + "" + liste_entete_2[5] + "" + liste_entete_2[6] + "" + liste_entete_2[7]
-    print("\t  Destination port: " + str(int(dest_port, 16)))
+    print("\tDestination port: " + str(int(dest_port, 16)))
 	
     length = liste_entete_2[8] + "" + liste_entete_2[9] + "" + liste_entete_2[10] + "" + liste_entete_2[11]
-    print("\t  Length: " + str(int(length, 16)))
+    print("\tLength: " + str(int(length, 16)))
 	
     checksum = liste_entete_2[12] + "" + liste_entete_2[13] + "" + liste_entete_2[14] + "" + liste_entete_2[15]
-    print("\t  Checksum: 0x" + checksum)
+    print("\tChecksum: 0x" + checksum)
     return (int(length, 16)-8, int(src_port, 16))
 
 

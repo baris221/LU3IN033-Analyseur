@@ -54,14 +54,14 @@ def main():
                 print("\n")
                 if(suite!=68):
                     continue
-                #udp
+                # Ici on gère le cas où on a un datagramme UDP
                 if(transportation==17):
                     udp_values=Udp.decodage_entete_udp(liste_octets,suite)
                     seq=1
                     ack=1
                     liste_protocol.append("UDP")
                     print("\n")
-                #tcp
+                # Ici on gère le cas où on a un segment TCP
                 if(transportation==6):
                     adresse_port=Tcp.get_Port(liste_octets,suite)
                     if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
@@ -78,10 +78,10 @@ def main():
                 
                     print("\n")
                     if(adresse_port[0]=="80" or adresse_port[1]=="80") and suite<len(liste_octets):
-                        print("HTTP")
                         liste_protocol.append("HTTP")
+                # Ici on gère les cas où on a un message HTTP
                 if(liste_protocol[-1]=="HTTP"):
-                    Http.http_decoder(liste_octets[suite:])
+                    Http.http_decoder(liste_octets[int(suite/2):])
                 
                 print("-------------------------------------")
                 i=i+1
