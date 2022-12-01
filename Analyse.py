@@ -31,7 +31,7 @@ def main():
     liste_seq_ack=[]
     liste_protocol=[]
     liste_suite=[]
-    with open("resultat.txt","w") as f:
+    with open("resultat/resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
                 liste_octets=[]
