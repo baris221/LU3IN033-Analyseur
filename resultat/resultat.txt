@@ -49,7 +49,30 @@ TCP (Transmission control protocol)
 	Window :507
 	Checksum : 0x(5d9c)
 	Urgent pointer :0
-	No option
+Transmission Control Protocol
+	Source port: 55520
+	Destination port: 80
+	Sequence number :1
+	Sequence Number (raw) :3547098059
+	Acknowledgement number :1
+	Acknowledgement Number (raw) :1145899138
+	Header Length :5
+	Flags :018
+		Reserved 000
+		Nonce :0
+		Congestion Window Reduced (CWR) :0
+		ECN-Echo :0
+		Urgent :0
+		Acknowledgement :1
+		Push :1
+		Reset :0
+		Syn :0
+		Fin :0
+	Window :507
+	Checksum : 0x(5d9c)
+	Urgent pointer :0
+
+	No options
 
 
 Hypertext Transfer Protocol
@@ -64,6 +87,7 @@ Hypertext Transfer Protocol
 	Connection: keep-alive
 	Pragma: no-cache
 	Cache-Control: no-cache
-	
 
+682
+345
 -------------------------------------

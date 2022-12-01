@@ -18,46 +18,48 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     liste_entete=Utils.list_octet_to_chiffre(liste_octets)
     liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
     
-    print("TCP (Transmission control protocol)")
+    tcp_string="Transmission Control Protocol\n"
+    
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
-    print("\tSource port: " + str(int(src_port, 16)))
+    tcp_string += "\tSource port: " + str(int(src_port, 16))+"\n"
 	
     dest_port = liste_entete_2[4] + "" + liste_entete_2[5] + "" + liste_entete_2[6] + "" + liste_entete_2[7]
-    print("\tDestination port: " + str(int(dest_port, 16)))
+    tcp_string += "\tDestination port: " + str(int(dest_port, 16))+"\n"
     
-    print("\tSequence number :"+str(seq))
+    tcp_string += "\tSequence number :"+str(seq)+"\n"
     seq_number=liste_entete_2[8] + "" + liste_entete_2[9] + "" + liste_entete_2[10] + "" + liste_entete_2[11]+""+liste_entete_2[12] + "" + liste_entete_2[13] + "" + liste_entete_2[14] + "" + liste_entete_2[15]
-    print("\tSequence Number (raw) :"+str(int(seq_number,16)))
+    tcp_string += "\tSequence Number (raw) :"+str(int(seq_number,16))+"\n"
     
-    print("\tAcknowledgement number :"+str(awk))
+    tcp_string += "\tAcknowledgement number :"+str(awk)+"\n"
     ack_number=liste_entete_2[16] + "" + liste_entete_2[17] + "" + liste_entete_2[18] + "" + liste_entete_2[19]+""+liste_entete_2[20] + "" + liste_entete_2[21] + "" + liste_entete_2[22] + "" + liste_entete_2[23]
-    print("\tAcknowledgement Number (raw) :"+str(int(ack_number,16)))
+    tcp_string += "\tAcknowledgement Number (raw) :"+str(int(ack_number,16))+"\n"
     
     header_length=liste_entete_2[24]
-    print("\tHeader Length :"+str(int(header_length,16)))
+    tcp_string += "\tHeader Length :"+str(int(header_length,16))+"\n"
     
     f_fo=liste_entete_2[25]+""+liste_entete_2[26]+""+liste_entete_2[27]
-    print("\tFlags :"+f_fo)
+    tcp_string += "\tFlags :"+f_fo+"\n"
     f_fo=Utils.hexa_to_binaire(f_fo)
-    print("\t\tReserved "+f_fo[0]+f_fo[1]+f_fo[2])
-    print("\t\tNonce :"+f_fo[3])
-    print("\t\tCongestion Window Reduced (CWR) :"+f_fo[4])
-    print("\t\tECN-Echo :"+f_fo[5])
-    print("\t\tUrgent :"+f_fo[6])
-    print("\t\tAcknowledgement :"+f_fo[7])
-    print("\t\tPush :"+f_fo[8])
-    print("\t\tReset :"+f_fo[9])
-    print("\t\tSyn :"+f_fo[10])
-    print("\t\tFin :"+f_fo[11])
+    tcp_string += "\t\tReserved "+f_fo[0]+f_fo[1]+f_fo[2]+"\n"
+    tcp_string += "\t\tNonce :"+f_fo[3]+"\n"
+    tcp_string += "\t\tCongestion Window Reduced (CWR) :"+f_fo[4]+"\n"
+    tcp_string += "\t\tECN-Echo :"+f_fo[5]+"\n"
+    tcp_string += "\t\tUrgent :"+f_fo[6]+"\n"
+    tcp_string += "\t\tAcknowledgement :"+f_fo[7]+"\n"
+    tcp_string += "\t\tPush :"+f_fo[8]+"\n"
+    tcp_string += "\t\tReset :"+f_fo[9]+"\n"
+    tcp_string += "\t\tSyn :"+f_fo[10]+"\n"
+    tcp_string += "\t\tFin :"+f_fo[11]+"\n"
     
     window=liste_entete_2[28] + "" + liste_entete_2[29] + "" + liste_entete_2[30] + "" + liste_entete_2[31]
-    print("\tWindow :"+str(int(window,16)))
+    tcp_string += "\tWindow :"+str(int(window,16))+"\n"
     
     check_sum=liste_entete_2[32] + "" + liste_entete_2[33] + "" + liste_entete_2[34] + "" + liste_entete_2[35]
-    print("\tChecksum : 0x("+check_sum+")")
+    tcp_string += "\tChecksum : 0x("+check_sum+")\n"
     
     urgent_pointer=liste_entete_2[36] + "" + liste_entete_2[37] + "" + liste_entete_2[38] + "" + liste_entete_2[39]
-    print("\tUrgent pointer :"+str(int(urgent_pointer,16)))
+    tcp_string += "\tUrgent pointer :"+str(int(urgent_pointer,16))+"\n"
+    print(tcp_string)
     
     return int(window,16)
     
@@ -105,7 +107,7 @@ def Tcp_options(suite,liste_octets):
 
         return 108+((4*header_length)-20)*2
     else:
-        print("\tNo option")
+        print("\tNo options")
         return 108
 
     
