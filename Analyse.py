@@ -31,6 +31,8 @@ def main():
     liste_seq_ack=[]
     liste_protocol=[]
     liste_suite=[]
+    proto=""
+    http_list=[]
     with open("resultat/resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -70,24 +72,26 @@ def main():
                     liste_seq_ack.append((seq,ack,window))                   
                     seq=seq+int(longeur_list-suite/2)               
                     port_ex=adresse_port
-                    liste_protocol.append("TCP")
+                    proto="TCP"
                 
                     print("\n")
                     if(adresse_port[0]=="80" or adresse_port[1]=="80") and suite<len(liste_octets):
-                        liste_protocol.append("HTTP")
+                        proto="HTTP"
                 data = 0
-                
+                liste_protocol.append(proto)
                 # Ici on gère les cas où on a un message HTTP
+                http_string=""
                 if(liste_protocol[-1]=="HTTP"):
-                    data = http.http_decoder(liste_octets[int(suite/2):])
-                    
+                    (data,http_string) = http.http_decoder(liste_octets[int(suite/2):])
+                    print(data)
+                http_list.append(http_string) 
                 # Si le dernier protocole encapsule des données, on affiche leur taille
                 if(len(data) != 0):
                     print("data: "+str(len(data))+" bytes")
                 
                 print("-------------------------------------")
                 i=i+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite)
+    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list)
     #print(suite)
 
 

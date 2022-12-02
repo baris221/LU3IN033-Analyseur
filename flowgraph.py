@@ -25,7 +25,7 @@ def save():
 
             
 
-def flowgraph(liste_octets,t,seq_ack,protocol,suite):
+def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
     liste=[0,1]
     liste1=[0,1,2,3]
     fr=tk.Frame(t,bg="#76FF7B")
@@ -48,6 +48,8 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite):
                 tm=" "
             if j==len(liste1)-2 and i!=0:
                 tm=tm+"> \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
+                if protocol=="HTTP":
+                    tm=http_string+"\n"
             if j==len(liste1)-1 and i==1:
                 tm=ip_list[3] #affichage destination port
             if j==0 and i==0 :
@@ -62,7 +64,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite):
 
     fr.pack(side="top",expand=True)
     
-def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite):    
+def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list):    
 
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
@@ -74,7 +76,7 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite):
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i])
+        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i])
         i=i+1
 
     btn = tk.Button(t, text = 'Save', command = lambda : save())

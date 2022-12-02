@@ -1,9 +1,9 @@
-Frame 1: 756 bytes (6048 bits).
+Frame 1: 399 bytes (3192 bits).
 
 
 Ethernet 2
-	Adresse de destination : 54:8d:5a:5e:4a:f2
-	Adresse de la source : 00:fe:ed:c0:ff:ee
+	Adresse de destination : 00:fe:ed:c0:ff:ee
+	Adresse de la source : 54:8d:5a:5e:4a:f2
 	Type IP Datagram(0x0800)
 
 
@@ -11,27 +11,27 @@ IPV4
 	Version : 4
 	IHL : 5 octets 0x(5)
 	Type of Service : 00
-	Total Lenght : 742
-	Identification : 7290
+	Total Lenght : 469
+	Identification : 220b
 	Flags
 		Reserved bit : 0
-		Don't fragment : 0
+		Don't fragment : 1
 		More Fragment : 0
 	Fragment offset : 0x0(0)
-	Time To Live : 122
+	Time To Live : 128
 	Protocol : TCP(6)
-	Header Checksum [Unverified] : 6fad
-	Source Address : 142.250.179.67
-	Destination Address : 10.116.15.35
+	Header Checksum [Unverified] : 0000
+	Source Address : 10.116.15.35
+	Destination Address : 142.250.179.67
 
 
 Transmission Control Protocol
-	Source port: 80
-	Destination port: 55520
+	Source port: 55520
+	Destination port: 80
 	Sequence number :1
-	Sequence Number (raw) :1145899138
+	Sequence Number (raw) :3547098059
 	Acknowledgement number :1
-	Acknowledgement Number (raw) :3547098488
+	Acknowledgement Number (raw) :1145899138
 	Header Length :5
 	Flags :018
 		Reserved 000
@@ -44,22 +44,25 @@ Transmission Control Protocol
 		Reset :0
 		Syn :0
 		Fin :0
-	Window :269
-	Checksum : 0x(37c8)
+	Window :507
+	Checksum : 0x(5d9c)
 	Urgent pointer :0
 
 	No options
 
 
 Hypertext Transfer Protocol
-	HTTP/1.1 200 OK
-	Content-Type: application/ocsp-response
-	Date: Thu, 01 Dec 2022 17:21:46 GMT
-	Cache-Control: public, max-age=14400
-	Server: ocsp_responder
-	Content-Length: 472
-	X-XSS-Protection: 0
-	X-Frame-Options: SAMEORIGIN
+	POST /gts1c3 HTTP/1.1
+	Host: ocsp.pki.goog
+	User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0
+	Accept: */*
+	Accept-Language: en-US,en;q=0.5
+	Accept-Encoding: gzip, deflate
+	Content-Type: application/ocsp-request
+	Content-Length: 84
+	Connection: keep-alive
+	Pragma: no-cache
+	Cache-Control: no-cache
 
-data: 472 bytes
+[]
 -------------------------------------
