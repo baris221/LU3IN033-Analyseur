@@ -64,5 +64,4 @@ Hypertext Transfer Protocol
 	Pragma: no-cache
 	Cache-Control: no-cache
 
-[]
 -------------------------------------

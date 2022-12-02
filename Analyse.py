@@ -83,7 +83,6 @@ def main():
                 http_string=""
                 if(liste_protocol[-1]=="HTTP"):
                     (data,http_string) = http.http_decoder(liste_octets[int(suite/2):])
-                    print(data)
                 http_list.append(http_string) 
                 # Si le dernier protocole encapsule des données, on affiche leur taille
                 if(len(data) != 0):
