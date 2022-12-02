@@ -11,7 +11,7 @@ import Utils
 import Ip
 import Udp
 import Tcp
-import Http
+import http
 import flowgraph
     
 
@@ -79,7 +79,7 @@ def main():
                 
                 # Ici on gère les cas où on a un message HTTP
                 if(liste_protocol[-1]=="HTTP"):
-                    data = Http.http_decoder(liste_octets[int(suite/2):])
+                    data = http.http_decoder(liste_octets[int(suite/2):])
                     
                 # Si le dernier protocole encapsule des données, on affiche leur taille
                 if(len(data) != 0):
@@ -88,7 +88,7 @@ def main():
                 print("-------------------------------------")
                 i=i+1
     flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite)
-    print(suite)
+    #print(suite)
 
 
 

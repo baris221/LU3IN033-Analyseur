@@ -25,15 +25,19 @@ def decodage_entete_ethernet(list_octets):
     print("Ethernet 2")
     adress_dest=""
     adress_source=""
+
+    #affichage de l'adresse destination
     for i in range(0,11,2):
         adress_dest=adress_dest+":"+liste_entete_2[i]+liste_entete_2[i+1]
     adress_dest=adress_dest.lstrip(":")
     print("\tAdresse de destination : "+adress_dest)
     
+    #affichage de l'adresse source
     for i in range(12,23,2):
         adress_source=adress_source +":"+liste_entete_2[i]+liste_entete_2[i+1]
     adress_source=adress_source.lstrip(":")
     print("\tAdresse de la source : "+adress_source)
     
+    #affichage de type ethernet
     type_ethernet=liste_entete_2[24]+liste_entete_2[25]+liste_entete_2[26]+liste_entete_2[27]
     print("\tType "+ethernet[type_ethernet]+"(0x"+type_ethernet+")")
