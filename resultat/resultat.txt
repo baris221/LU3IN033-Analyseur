@@ -51,19 +51,6 @@ Transmission Control Protocol
 	No options
 
 
-1
-POST /gts1c3 HTTP/1.1
-
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 Hypertext Transfer Protocol
 	POST /gts1c3 HTTP/1.1
 	Host: ocsp.pki.goog

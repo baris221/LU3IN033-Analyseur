@@ -21,10 +21,10 @@ def http_decoder(list_octets):
             http_string = http_string + "\t" + bytes.fromhex(temporary_string).decode('ASCII')
             last_index = index + 4
             numeroligne=numeroligne+1
-            print(numeroligne)
+            #print(numeroligne)
             if(numeroligne==1):
                 httpAmontrer=bytes.fromhex(temporary_string).decode('ASCII')
-                print(httpAmontrer)
+                #print(httpAmontrer)
         # Condition de fin d'entête HTTP
         if(hex_string[index] == '0' and hex_string[index+1] == 'd' and hex_string[index+2] == '0' and hex_string[index+3] == 'a' and hex_string[index+4] == '0' and hex_string[index+5] == 'd' and hex_string[index+6] == '0' and hex_string[index+7] == 'a'):
             print(http_string) # On affiche le message HTTP
