@@ -23,7 +23,7 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
     
     tcp_string="Transmission Control Protocol\n"
-    
+    seq_aug=0
     #Affichage de port source
     src_port = liste_entete_2[0] + "" + liste_entete_2[1] + "" + liste_entete_2[2] + "" + liste_entete_2[3]
     tcp_string += "\tSource port: " + str(int(src_port, 16))+"\n"
@@ -60,6 +60,8 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     tcp_string += "\t\tReset :"+f_fo[9]+"\n"
     tcp_string += "\t\tSyn :"+f_fo[10]+"\n"
     tcp_string += "\t\tFin :"+f_fo[11]+"\n"
+    if(f_fo[10]=="1" or f_fo[11]=="1"):
+        seq_aug=1
     
     #Window
     window=liste_entete_2[28] + "" + liste_entete_2[29] + "" + liste_entete_2[30] + "" + liste_entete_2[31]
@@ -74,7 +76,7 @@ def decodage_TCP_entete(liste_octets,suite,seq,awk):
     tcp_string += "\tUrgent pointer :"+str(int(urgent_pointer,16))+"\n"
     print(tcp_string)
     
-    return int(window,16)
+    return (int(window,16),seq_aug,0)
     
     
 def get_Port(liste_octets,suite):
@@ -129,8 +131,16 @@ def Tcp_options(suite,liste_octets):
         #Ajout suite+40+longeur des options
         return suite+40+((4*header_length)-20)*2
     else:
+        index=suite+40
+        if(len(liste_entete)==index):
+            return index
+        while(liste_entete[index]=="0" and liste_entete[index+1]=="0"):
+            index=index+2
+            print(index)
+            if(len(liste_entete)==index):
+                break
         #Si pas de l'option,ajoute directement 40
         print("\tNo options")
-        return suite+40
+        return index
 
     

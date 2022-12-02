@@ -25,8 +25,8 @@ def main():
     nom_fic=sys.argv[1]
     li=Utils.lire_trace(nom_fic)
     i=1
-    seq=1
-    ack=1
+    seq=0
+    ack=0
     port_ex=("","")
     liste_seq_ack=[]
     liste_protocol=[]
@@ -63,14 +63,15 @@ def main():
                 if(transportation==6):
                     adresse_port=Tcp.get_Port(liste_octets,suite)
                     if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
-                        seq=1
-                        ack=1
+                        seq=0
+                        ack=0
                     if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ):
                         seq,ack=ack,seq
-                    window=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    (window,seq_aug,awk_aug)=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
                     suite=Tcp.Tcp_options(suite,liste_octets)
+                    #print(suite)
                     liste_seq_ack.append((seq,ack,window))                   
-                    seq=seq+int(longeur_list-suite/2)               
+                    seq=seq+int(longeur_list-suite/2)+seq_aug               
                     port_ex=adresse_port
                     proto="TCP"
                 
@@ -85,7 +86,7 @@ def main():
                     (data,http_string) = http.http_decoder(liste_octets[int(suite/2):])
                 http_list.append(http_string) 
                 # Si le dernier protocole encapsule des données, on affiche leur taille
-                print(data)
+                #print(data)
                 if(len(data) != 0):
                     print("data: "+str(len(data))+" bytes")
                 
