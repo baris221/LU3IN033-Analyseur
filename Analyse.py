@@ -39,10 +39,6 @@ def main():
                     for byte in line:
                         liste_octets.append(byte)
                 longeur_list=len(liste_octets)
-                # Mes modifications
-                print("Coucou ici la gueule de liste octets:")
-                print(liste_octets[0:20])
-                # Fin de mes modifications"""
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 print("\n")
                 Ethernet.decodage_entete_ethernet(liste_octets)
@@ -87,9 +83,7 @@ def main():
                     
                 # Si le dernier protocole encapsule des données, on affiche leur taille
                 if(len(data) != 0):
-                    print("Data: "+str(len(data))+" bytes ("+str(data*8)+" bits).")
-                    
-                
+                    print("data: "+str(len(data))+" bytes")
                 
                 print("-------------------------------------")
                 i=i+1

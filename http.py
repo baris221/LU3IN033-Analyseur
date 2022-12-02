@@ -21,6 +21,4 @@ def http_decoder(list_octets):
         # Condition de fin d'entête HTTP
         if(hex_string[index] == '0' and hex_string[index+1] == 'd' and hex_string[index+2] == '0' and hex_string[index+3] == 'a' and hex_string[index+4] == '0' and hex_string[index+5] == 'd' and hex_string[index+6] == '0' and hex_string[index+7] == 'a'):
             print(http_string) # On affiche le message HTTP
-            print(index)
-            print(int((index+8)/2))
             return list_octets[int((index+8)/2):]
