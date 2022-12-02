@@ -48,7 +48,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
                 tm=" "
             if j==len(liste1)-2 and i!=0:
                 if protocol=="HTTP":
-                    tm=tm+"\n"+http_string+"\n"
+                    tm=tm+"> \n"+http_string+"\n"
                 else:
                     tm=tm+"> \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
             if j==len(liste1)-1 and i==1:
