@@ -41,16 +41,16 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
         fr1=tk.Frame(fr,bg="#76FF7B")
 
         for i in liste:
-            tm="------------------------------------------------"
+            tm="\t ------------------------------------------------> \t"
             if j==0 and i==1:
                 tm=ip_list[2] #affichage source port 
             if i==0:
                 tm=" "
             if j==len(liste1)-2 and i!=0:
                 if protocol=="HTTP":
-                    tm=tm+"> \n"+http_string
+                    tm=tm+" \n"+http_string
                 else:
-                    tm=tm+"> \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
+                    tm=tm+" \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
             if j==len(liste1)-1 and i==1:
                 tm=ip_list[3] #affichage destination port
             if j==0 and i==0 :
@@ -70,6 +70,7 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list):
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
     t.title("Wireshark Flow Graph")
+    t.resizable(width=False,height=False)
     t.config(background="#76FF7B")
     i=0
     for frame in li:
