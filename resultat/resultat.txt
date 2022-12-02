@@ -1,4 +1,4 @@
-Frame 1: 399 bytes (3192 bits).
+Frame 1: 445 bytes (3560 bits).
 
 
 Ethernet 2
@@ -11,8 +11,8 @@ IPV4
 	Version : 4
 	IHL : 5 octets 0x(5)
 	Type of Service : 00
-	Total Lenght : 469
-	Identification : 220b
+	Total Lenght : 431
+	Identification : b0f5
 	Flags
 		Reserved bit : 0
 		Don't fragment : 1
@@ -22,16 +22,16 @@ IPV4
 	Protocol : TCP(6)
 	Header Checksum [Unverified] : 0000
 	Source Address : 10.116.15.35
-	Destination Address : 142.250.179.67
+	Destination Address : 128.119.245.12
 
 
 Transmission Control Protocol
-	Source port: 55520
+	Source port: 50068
 	Destination port: 80
 	Sequence number :1
-	Sequence Number (raw) :3547098059
+	Sequence Number (raw) :423639249
 	Acknowledgement number :1
-	Acknowledgement Number (raw) :1145899138
+	Acknowledgement Number (raw) :683980434
 	Header Length :5
 	Flags :018
 		Reserved 000
@@ -44,24 +44,216 @@ Transmission Control Protocol
 		Reset :0
 		Syn :0
 		Fin :0
-	Window :507
-	Checksum : 0x(5d9c)
+	Window :513
+	Checksum : 0x(90bc)
 	Urgent pointer :0
 
 	No options
 
 
 Hypertext Transfer Protocol
-	POST /gts1c3 HTTP/1.1
-	Host: ocsp.pki.goog
-	User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0
-	Accept: */*
-	Accept-Language: en-US,en;q=0.5
-	Accept-Encoding: gzip, deflate
-	Content-Type: application/ocsp-request
-	Content-Length: 84
-	Connection: keep-alive
-	Pragma: no-cache
-	Cache-Control: no-cache
+	GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1
+	Host: gaia.cs.umass.edu
+	User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0
+	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+	Accept-Language: en-US,en;q=0.5
+	Accept-Encoding: gzip, deflate
+	Connection: keep-alive
+	Upgrade-Insecure-Requests: 1
 
+-------------------------------------
+Frame 2: 540 bytes (4320 bits).
+
+
+Ethernet 2
+	Adresse de destination : 54:8d:5a:5e:4a:f2
+	Adresse de la source : 00:fe:ed:c0:ff:ee
+	Type IP Datagram(0x0800)
+
+
+IPV4
+	Version : 4
+	IHL : 5 octets 0x(5)
+	Type of Service : 00
+	Total Lenght : 526
+	Identification : 0d8d
+	Flags
+		Reserved bit : 0
+		Don't fragment : 1
+		More Fragment : 0
+	Fragment offset : 0x0(0)
+	Time To Live : 51
+	Protocol : TCP(6)
+	Header Checksum [Unverified] : a942
+	Source Address : 128.119.245.12
+	Destination Address : 10.116.15.35
+
+
+Transmission Control Protocol
+	Source port: 80
+	Destination port: 50068
+	Sequence number :1
+	Sequence Number (raw) :683980434
+	Acknowledgement number :392
+	Acknowledgement Number (raw) :423639640
+	Header Length :5
+	Flags :018
+		Reserved 000
+		Nonce :0
+		Congestion Window Reduced (CWR) :0
+		ECN-Echo :0
+		Urgent :0
+		Acknowledgement :1
+		Push :1
+		Reset :0
+		Syn :0
+		Fin :0
+	Window :237
+	Checksum : 0x(7f32)
+	Urgent pointer :0
+
+	No options
+
+
+Hypertext Transfer Protocol
+	HTTP/1.1 200 OK
+	Date: Fri, 02 Dec 2022 12:02:42 GMT
+	Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.30 mod_perl/2.0.11 Perl/v5.16.3
+	Last-Modified: Fri, 02 Dec 2022 06:59:01 GMT
+	ETag: "80-5eed2df5b5078"
+	Accept-Ranges: bytes
+	Content-Length: 128
+	Keep-Alive: timeout=5, max=100
+	Connection: Keep-Alive
+	Content-Type: text/html; charset=UTF-8
+
+data: 128 bytes
+-------------------------------------
+Frame 3: 402 bytes (3216 bits).
+
+
+Ethernet 2
+	Adresse de destination : 00:fe:ed:c0:ff:ee
+	Adresse de la source : 54:8d:5a:5e:4a:f2
+	Type IP Datagram(0x0800)
+
+
+IPV4
+	Version : 4
+	IHL : 5 octets 0x(5)
+	Type of Service : 00
+	Total Lenght : 388
+	Identification : b0f7
+	Flags
+		Reserved bit : 0
+		Don't fragment : 1
+		More Fragment : 0
+	Fragment offset : 0x0(0)
+	Time To Live : 128
+	Protocol : TCP(6)
+	Header Checksum [Unverified] : 0000
+	Source Address : 10.116.15.35
+	Destination Address : 128.119.245.12
+
+
+Transmission Control Protocol
+	Source port: 50069
+	Destination port: 80
+	Sequence number :487
+	Sequence Number (raw) :3802040364
+	Acknowledgement number :392
+	Acknowledgement Number (raw) :412905810
+	Header Length :5
+	Flags :018
+		Reserved 000
+		Nonce :0
+		Congestion Window Reduced (CWR) :0
+		ECN-Echo :0
+		Urgent :0
+		Acknowledgement :1
+		Push :1
+		Reset :0
+		Syn :0
+		Fin :0
+	Window :513
+	Checksum : 0x(9091)
+	Urgent pointer :0
+
+	No options
+
+
+Hypertext Transfer Protocol
+	GET /favicon.ico HTTP/1.1
+	Host: gaia.cs.umass.edu
+	User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0
+	Accept: image/avif,image/webp,*/*
+	Accept-Language: en-US,en;q=0.5
+	Accept-Encoding: gzip, deflate
+	Connection: keep-alive
+	Referer: http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file1.html
+
+-------------------------------------
+Frame 4: 539 bytes (4312 bits).
+
+
+Ethernet 2
+	Adresse de destination : 54:8d:5a:5e:4a:f2
+	Adresse de la source : 00:fe:ed:c0:ff:ee
+	Type IP Datagram(0x0800)
+
+
+IPV4
+	Version : 4
+	IHL : 5 octets 0x(5)
+	Type of Service : 00
+	Total Lenght : 525
+	Identification : cab8
+	Flags
+		Reserved bit : 0
+		Don't fragment : 1
+		More Fragment : 0
+	Fragment offset : 0x0(0)
+	Time To Live : 51
+	Protocol : TCP(6)
+	Header Checksum [Unverified] : ec17
+	Source Address : 128.119.245.12
+	Destination Address : 10.116.15.35
+
+
+Transmission Control Protocol
+	Source port: 80
+	Destination port: 50069
+	Sequence number :392
+	Sequence Number (raw) :412905810
+	Acknowledgement number :835
+	Acknowledgement Number (raw) :3802040712
+	Header Length :5
+	Flags :018
+		Reserved 000
+		Nonce :0
+		Congestion Window Reduced (CWR) :0
+		ECN-Echo :0
+		Urgent :0
+		Acknowledgement :1
+		Push :1
+		Reset :0
+		Syn :0
+		Fin :0
+	Window :237
+	Checksum : 0x(3907)
+	Urgent pointer :0
+
+	No options
+
+
+Hypertext Transfer Protocol
+	HTTP/1.1 404 Not Found
+	Date: Fri, 02 Dec 2022 12:02:42 GMT
+	Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.30 mod_perl/2.0.11 Perl/v5.16.3
+	Content-Length: 209
+	Keep-Alive: timeout=5, max=100
+	Connection: Keep-Alive
+	Content-Type: text/html; charset=iso-8859-1
+
+data: 209 bytes
 -------------------------------------
