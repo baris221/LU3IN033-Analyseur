@@ -77,7 +77,7 @@ def main():
                     print("\n")
                     if(adresse_port[0]=="80" or adresse_port[1]=="80") and suite<len(liste_octets):
                         proto="HTTP"
-                data = 0
+                data = []
                 liste_protocol.append(proto)
                 # Ici on gère les cas où on a un message HTTP
                 http_string=""
@@ -85,6 +85,7 @@ def main():
                     (data,http_string) = http.http_decoder(liste_octets[int(suite/2):])
                 http_list.append(http_string) 
                 # Si le dernier protocole encapsule des données, on affiche leur taille
+                print(data)
                 if(len(data) != 0):
                     print("data: "+str(len(data))+" bytes")
                 
