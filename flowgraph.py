@@ -28,7 +28,10 @@ def save():
 def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
     liste=[0,1]
     liste1=[0,1,2,3]
-    fr=tk.Frame(t,bg="#76FF7B")
+    background="#76FF7B"
+    if(protocol=="HTTP"):
+        background="#FF0000"
+    fr=tk.Frame(t,bg=background)
     adresses_ip=Ip.getAdressIP(liste_octets)
     if(adresses_ip==17):
         adresses_port=Udp.get_Port(liste_octets)
@@ -38,9 +41,6 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
 
     for j in liste1:
-        background="#76FF7B"
-        if(protocol=="HTTP"):
-            background="#800080"
         fr1=tk.Frame(fr,bg=background)
 
         for i in liste:
