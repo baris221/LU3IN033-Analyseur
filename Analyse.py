@@ -36,6 +36,7 @@ def main():
     proto="" #le protocole du trame
     http_list=[] #liste contenant des messages http sinon vide 
     port_init=[] #le port de l'état initial, change dans les cas des noveaux messages
+    list_port_init=[]
     with open("resultat/resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -68,6 +69,7 @@ def main():
                     adresse_port=Tcp.get_Port(liste_octets,suite)
                     if(m==1):
                         port_init=adresse_port
+                        list_port_init.append(port_init)
                     if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
                         seq=0
                         ack=0
@@ -104,7 +106,7 @@ def main():
                 print("-------------------------------------")
                 i=i+1
                 m=m+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change)
+    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change,list_port_init)
     #print(suite)
     #print(liste_change)
 

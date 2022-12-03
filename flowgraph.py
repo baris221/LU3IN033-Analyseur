@@ -86,8 +86,20 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
         fr1.pack(side="left")
 
     fr.pack(side="top",expand=True)
+
+def showfleche(t,liste):
+ 
+    t_it=""
+    frame=tk.Frame(t,bg="#76FF7B")
+    for port in liste:       
+        label=tk.Label(frame,text=t_it+port[0]+"------->"+port[1]+"\n",bg="#76FF7B",font=20,compound='right')
+        label.pack(side="top")
+        t_it=t_it+"\t"
+    frame.pack(side="left")
+
+
     
-def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change):    
+def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_port_init):    
 
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
@@ -102,7 +114,8 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,li
                 liste_octets.append(byte)
         flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i])
         i=i+1
-
+    showfleche(t,list_port_init)
+    entry=tk.Entry(t)
     btn = tk.Button(t, text = 'Save', command = lambda : save())
     btn.pack(side = "top", pady = 20)
     btn1=tk.Button(t,text="Ouvre Analyseur",command=selectfile)
