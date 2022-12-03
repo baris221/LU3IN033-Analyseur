@@ -25,7 +25,7 @@ def save():
 
             
 
-def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
+def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
     liste=[0,1]
     liste1=[0,1,2,3]
     background="#76FF7B"
@@ -37,6 +37,10 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
         adresses_port=Udp.get_Port(liste_octets)
     else:
         adresses_port=Tcp.get_Port(liste_octets,suite)
+    
+    if(change):
+        adresses_port=(adresses_port[1],adresses_port[0])
+        adresses_ip=(adresses_ip[1],adresses_ip[0])
 
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
 
@@ -45,6 +49,8 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
 
         for i in liste:
             tm="\t ------------------------------------------------> \t"
+            if(change):
+                tm="\t <------------------------------------------------ \t"
             if j==0 and i==1:
                 tm=ip_list[2] #affichage source port 
             if i==0:
@@ -68,7 +74,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
 
     fr.pack(side="top",expand=True)
     
-def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list):    
+def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change):    
 
     li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
@@ -81,7 +87,7 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list):
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i])
+        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i])
         i=i+1
 
     btn = tk.Button(t, text = 'Save', command = lambda : save())

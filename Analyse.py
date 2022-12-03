@@ -27,12 +27,15 @@ def main():
     i=1
     seq=0
     ack=0
+    m=1
     port_ex=("","")
-    liste_seq_ack=[]
-    liste_protocol=[]
-    liste_suite=[]
-    proto=""
-    http_list=[]
+    liste_seq_ack=[] #une liste contenant des valeurs sequence et acquittement
+    liste_protocol=[] #une liste de protocol qui contient soit http ou tcp
+    liste_suite=[] #une liste qui contient les numéros suite pour les messages
+    liste_change=[] #une liste qui nous donne si les ports sont inversés par rapport àport initial
+    proto="" #le protocole du trame
+    http_list=[] #liste contenant des messages http sinon vide 
+    port_init=[] #le port de l'état initial, change dans les cas des noveaux messages
     with open("resultat/resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -40,6 +43,7 @@ def main():
                 for line in frame:
                     for byte in line:
                         liste_octets.append(byte)
+                
                 longeur_list=len(liste_octets)
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 print("\n")
@@ -62,11 +66,18 @@ def main():
                 # Ici on gère le cas où on a un segment TCP
                 if(transportation==6):
                     adresse_port=Tcp.get_Port(liste_octets,suite)
+                    if(m==1):
+                        port_init=adresse_port
                     if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
                         seq=0
                         ack=0
+                        m=1
+                    
                     if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ):
+                       
                         seq,ack=ack,seq
+                    cng=(port_init[0]==adresse_port[1] and port_init[1]==adresse_port[0] and i!=1)
+                    liste_change.append(cng)
                     (window,seq_aug,awk_aug)=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
                     suite=Tcp.Tcp_options(suite,liste_octets)
                     #print(suite)
@@ -92,8 +103,10 @@ def main():
                 
                 print("-------------------------------------")
                 i=i+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list)
+                m=m+1
+    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change)
     #print(suite)
+    #print(liste_change)
 
 
 
