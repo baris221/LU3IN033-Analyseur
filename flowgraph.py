@@ -11,6 +11,7 @@ import Ip
 import Udp
 import Tcp
 import tkinter.filedialog as fd
+from tkinter.messagebox import showinfo
 
 liste=[0,1]
 liste1=[0,1,2]
@@ -22,6 +23,18 @@ def save():
              ('Text Document', '*.txt'),
              ('Photos','*.png')]
     file = fd.asksaveasfile(filetypes = files, defaultextension = files)
+
+def selectfile():
+    filetypes = (
+        ('text files', '*.txt'),
+        ('All files', '*Allfile*')
+    )
+
+    filename = fd.askopenfilename(
+        title='resultat.txt',
+        initialdir='/resultat',
+        filetypes=filetypes)
+
 
             
 
@@ -92,6 +105,8 @@ def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,li
 
     btn = tk.Button(t, text = 'Save', command = lambda : save())
     btn.pack(side = "top", pady = 20)
+    btn1=tk.Button(t,text="Ouvre Analyseur",command=selectfile)
+    btn1.pack(side = "top", pady = 20)
     t.mainloop()
     
 #showgraph("TCP_3.txt")
