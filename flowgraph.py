@@ -38,7 +38,10 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
 
     for j in liste1:
-        fr1=tk.Frame(fr,bg="#76FF7B")
+        background="#76FF7B"
+        if(protocol=="HTTP"):
+            background="#800080"
+        fr1=tk.Frame(fr,bg=background)
 
         for i in liste:
             tm="\t ------------------------------------------------> \t"
@@ -59,7 +62,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string):
                 tm=ip_list[1] #affichage adresse ip de destination
             if i==1 and j==len(liste1)-3:
                 tm=protocol+"\n"
-            label_t=tk.Label(fr1,text=tm,bg="#76FF7B")
+            label_t=tk.Label(fr1,text=tm,bg=background)
             label_t.pack(side="top")
         fr1.pack(side="left")
 
