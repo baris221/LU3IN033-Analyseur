@@ -106,7 +106,7 @@ def main():
                 print("-------------------------------------")
                 i=i+1
                 m=m+1
-    flowgraph.showgraph(nom_fic,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change,list_port_init)
+    flowgraph.showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change,list_port_init)
     #print(suite)
     #print(liste_change)
 

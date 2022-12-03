@@ -99,9 +99,8 @@ def showfleche(t,liste):
 
 
     
-def showgraph(path_to_file,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_port_init):    
+def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_port_init):    
 
-    li=Utils.lire_trace(path_to_file)
     t=tk.Tk()
     t.title("Wireshark Flow Graph")
     t.resizable(width=False,height=False)
