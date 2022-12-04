@@ -38,6 +38,7 @@ def main():
     http_list=[] #liste contenant des messages http sinon vide 
     port_init=[] #le port de l'état initial, change dans les cas des noveaux messages
     list_port_init=[]
+    liste_info_pertinents=[]
     with open("resultat/resultat.txt","w") as f:
         with contextlib.redirect_stdout(f):
             for frame in li:
@@ -45,7 +46,7 @@ def main():
                 for line in frame:
                     for byte in line:
                         liste_octets.append(byte)
-                
+                infopertinent=""
                 longeur_list=len(liste_octets)
                 print("Frame "+str(i)+": "+str(longeur_list)+" bytes "+"("+str(longeur_list*8)+" bits).")
                 print("\n")
@@ -81,7 +82,9 @@ def main():
                     cng=(port_init[0]==adresse_port[1] and port_init[1]==adresse_port[0] and i!=1)
                     liste_change.append(cng)
                     (window,seq_aug,awk_aug)=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
+                    infopertinent=Tcp.getInfoPertinent(suite,liste_octets)
                     suite=Tcp.Tcp_options(suite,liste_octets)
+                    liste_info_pertinents.append(infopertinent)
                     #print(suite)
                     liste_seq_ack.append((seq,ack,window))                   
                     seq=seq+int(longeur_list-suite/2)+seq_aug               
@@ -106,7 +109,7 @@ def main():
                 print("-------------------------------------")
                 i=i+1
                 m=m+1
-    flowgraph.showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change,list_port_init)
+    flowgraph.showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,liste_change,liste_info_pertinents,list_port_init)
     #print(suite)
     #print(liste_change)
 

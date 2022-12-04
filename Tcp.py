@@ -143,4 +143,18 @@ def Tcp_options(suite,liste_octets):
         print("\tNo options")
         return index
 
+
+def getInfoPertinent(suite,liste_octets):
+    infoPertinents=""
+    liste_entete=Utils.list_octet_to_chiffre(liste_octets)
+    liste_entete_2= Utils.obtenir_des_chiffres_voulus(liste_entete,suite,40)
+    f_fo=liste_entete_2[25]+""+liste_entete_2[26]+""+liste_entete_2[27]
+    f_fo=Utils.hexa_to_binaire(f_fo)
+    if(f_fo[7]=="1"):
+        infoPertinents=infoPertinents+" ACK "
+    if(f_fo[10]=="1"):
+        infoPertinents=infoPertinents+" SYN "
+    if(f_fo[11]=="1"):
+        infoPertinents=infoPertinents+" FIN "
     
+    return "["+infoPertinents+"]"

@@ -43,10 +43,28 @@ def selectfile():
         initialdir='/resultat',
         filetypes=filetypes)
 
-
+def informations(t):
+    frame=tk.Frame(t,bg="#76FF7B")
+    for j in liste1:
+        frame1=tk.Frame(frame,bg="#76FF7B")
+        for i in liste:
+            text=""
+            if(j==0 and i==1):
+                text="Port 1 \t \t \t"
+            if(j==len(liste1)-1 and i==1):
+                text="\t \t \t Port 2"
+            if(j==0 and i==0):
+                text="Adresse IP 1 \t \t \t"
+            if(j==len(liste1)-1 and i==0):
+                text="\t \t \t Adresse IP 2"
+            label=tk.Label(frame1,text=text,bg="#76FF7B")
+            label.pack(side="top")
+        frame1.pack(side="left")
+    frame.pack(side="top")
+            
             
 
-def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change,list_port_init):
+def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change,info_perti,list_port_init):
     liste=[0,1]
     liste1=[0,1,2,3]
     textToReturn=""
@@ -88,7 +106,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change,list_port
                 if protocol=="HTTP":
                     tm=tm+" \n"+http_string
                 else:
-                    tm=tm+" \n Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
+                    tm=tm+" \n"+info_perti +"Seq ->"+str(seq_ack[0])+", Ack -> "+str(seq_ack[1])+", Win -> "+str(seq_ack[2])
             if j==len(liste1)-1 and i==1:
                 tm=ip_list[3] #affichage destination port
             if j==0 and i==0 :
@@ -118,19 +136,20 @@ def showfleche(t,liste):
 
 
     
-def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_port_init):    
+def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_info_pertinents,list_port_init):    
     textToSave=""
     t=tk.Tk()
     t.title("Wireshark Flow Graph")
     t.resizable(width=False,height=False)
     t.config(background="#76FF7B")
     i=0
+    informations(t)
     for frame in li:
         liste_octets=[]
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        textToSave=textToSave+flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i],list_port_init)
+        textToSave=textToSave+flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i],list_info_pertinents[i],list_port_init)
         i=i+1
     showfleche(t,list_port_init)
     entry=tk.Entry(t)
