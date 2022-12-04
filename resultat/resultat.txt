@@ -1,9 +1,9 @@
-Frame 1: 66 bytes (528 bits).
+Frame 1: 56 bytes (448 bits).
 
 
 Ethernet 2
-	Adresse de destination : 50:9a:4c:68:3f:e0
-	Adresse de la source : c8:b2:9b:64:61:a8
+	Adresse de destination : c8:b2:9b:64:61:a8
+	Adresse de la source : 50:9a:4c:68:3f:e0
 	Type IP Datagram(0x0800)
 
 
@@ -11,51 +11,46 @@ IPV4
 	Version : 4
 	IHL : 5 octets 0x(5)
 	Type of Service : 00
-	Total Lenght : 52
-	Identification : bdc8
+	Total Lenght : 40
+	Identification : 498b
 	Flags
 		Reserved bit : 0
 		Don't fragment : 1
 		More Fragment : 0
 	Fragment offset : 0x0(0)
-	Time To Live : 128
+	Time To Live : 119
 	Protocol : TCP(6)
-	Header Checksum [Unverified] : 0000
-	Source Address : 10.188.175.213
-	Destination Address : 13.107.4.52
+	Header Checksum [Unverified] : ee14
+	Source Address : 13.107.4.52
+	Destination Address : 10.188.175.213
 
 
 Transmission Control Protocol
-	Source port: 57457
-	Destination port: 80
+	Source port: 80
+	Destination port: 62920
 	Sequence number :0
-	Sequence Number (raw) :3970466402
+	Sequence Number (raw) :2310124047
 	Acknowledgement number :0
-	Acknowledgement Number (raw) :0
-	Header Length :8
-	Flags :002
+	Acknowledgement Number (raw) :2302972504
+	Header Length :5
+	Flags :010
 		Reserved 000
 		Nonce :0
 		Congestion Window Reduced (CWR) :0
 		ECN-Echo :0
 		Urgent :0
-		Acknowledgement :0
+		Acknowledgement :1
 		Push :0
 		Reset :0
-		Syn :1
+		Syn :0
 		Fin :0
-	Window :64240
-	Checksum : 0x(cc56)
+	Window :16384
+	Checksum : 0x(562d)
 	Urgent pointer :0
 
-	Options:
-4
-		Option :Maximum Segment Size
-		Option :No-operation
-		Option :WSOPT
-		Option :No-operation
-		Option :No-operation
-		Option :SACK permitted
+110
+112
+	No options
 
 
 -------------------------------------
@@ -73,28 +68,28 @@ IPV4
 	IHL : 5 octets 0x(5)
 	Type of Service : 00
 	Total Lenght : 52
-	Identification : afa7
+	Identification : fe6c
 	Flags
 		Reserved bit : 0
-		Don't fragment : 1
+		Don't fragment : 0
 		More Fragment : 0
 	Fragment offset : 0x0(0)
-	Time To Live : 118
+	Time To Live : 123
 	Protocol : TCP(6)
-	Header Checksum [Unverified] : 88ec
-	Source Address : 13.107.4.52
+	Header Checksum [Unverified] : d7dc
+	Source Address : 216.58.214.174
 	Destination Address : 10.188.175.213
 
 
 Transmission Control Protocol
 	Source port: 80
-	Destination port: 57457
+	Destination port: 61231
 	Sequence number :0
-	Sequence Number (raw) :3184406239
-	Acknowledgement number :1
-	Acknowledgement Number (raw) :3970466403
+	Sequence Number (raw) :245012019
+	Acknowledgement number :0
+	Acknowledgement Number (raw) :4099849317
 	Header Length :8
-	Flags :012
+	Flags :010
 		Reserved 000
 		Nonce :0
 		Congestion Window Reduced (CWR) :0
@@ -103,370 +98,16 @@ Transmission Control Protocol
 		Acknowledgement :1
 		Push :0
 		Reset :0
-		Syn :1
+		Syn :0
 		Fin :0
-	Window :65535
-	Checksum : 0x(6668)
+	Window :256
+	Checksum : 0x(68a8)
 	Urgent pointer :0
 
 	Options:
-4
-		Option :Maximum Segment Size
-		Option :No-operation
-		Option :WSOPT
 		Option :No-operation
 		Option :No-operation
-		Option :SACK permitted
-
-
--------------------------------------
-Frame 3: 54 bytes (432 bits).
-
-
-Ethernet 2
-	Adresse de destination : 50:9a:4c:68:3f:e0
-	Adresse de la source : c8:b2:9b:64:61:a8
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 40
-	Identification : bdc9
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 128
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 0000
-	Source Address : 10.188.175.213
-	Destination Address : 13.107.4.52
-
-
-Transmission Control Protocol
-	Source port: 57457
-	Destination port: 80
-	Sequence number :1
-	Sequence Number (raw) :3970466403
-	Acknowledgement number :1
-	Acknowledgement Number (raw) :3184406240
-	Header Length :5
-	Flags :010
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :0
-		Reset :0
-		Syn :0
-		Fin :0
-	Window :517
-	Checksum : 0x(cc4a)
-	Urgent pointer :0
-
-
-
--------------------------------------
-Frame 4: 165 bytes (1320 bits).
-
-
-Ethernet 2
-	Adresse de destination : 50:9a:4c:68:3f:e0
-	Adresse de la source : c8:b2:9b:64:61:a8
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 151
-	Identification : bdca
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 128
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 0000
-	Source Address : 10.188.175.213
-	Destination Address : 13.107.4.52
-
-
-Transmission Control Protocol
-	Source port: 57457
-	Destination port: 80
-	Sequence number :1
-	Sequence Number (raw) :3970466403
-	Acknowledgement number :1
-	Acknowledgement Number (raw) :3184406240
-	Header Length :5
-	Flags :018
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :1
-		Reset :0
-		Syn :0
-		Fin :0
-	Window :517
-	Checksum : 0x(ccb9)
-	Urgent pointer :0
-
-	No options
-
-
-Hypertext Transfer Protocol
-	GET /connecttest.txt HTTP/1.1
-	Connection: Close
-	User-Agent: Microsoft NCSI
-	Host: www.msftconnecttest.com
-
--------------------------------------
-Frame 5: 56 bytes (448 bits).
-
-
-Ethernet 2
-	Adresse de destination : c8:b2:9b:64:61:a8
-	Adresse de la source : 50:9a:4c:68:3f:e0
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 40
-	Identification : afa8
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 119
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 87f7
-	Source Address : 13.107.4.52
-	Destination Address : 10.188.175.213
-
-
-Transmission Control Protocol
-	Source port: 80
-	Destination port: 57457
-	Sequence number :1
-	Sequence Number (raw) :3184406240
-	Acknowledgement number :112
-	Acknowledgement Number (raw) :3970466514
-	Header Length :5
-	Flags :010
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :0
-		Reset :0
-		Syn :0
-		Fin :0
-	Window :16384
-	Checksum : 0x(66b8)
-	Urgent pointer :0
-
-110
-112
-	No options
-
-
--------------------------------------
-Frame 6: 593 bytes (4744 bits).
-
-
-Ethernet 2
-	Adresse de destination : c8:b2:9b:64:61:a8
-	Adresse de la source : 50:9a:4c:68:3f:e0
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 579
-	Identification : afa9
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 119
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 85db
-	Source Address : 13.107.4.52
-	Destination Address : 10.188.175.213
-
-
-Transmission Control Protocol
-	Source port: 80
-	Destination port: 57457
-	Sequence number :1
-	Sequence Number (raw) :3184406240
-	Acknowledgement number :112
-	Acknowledgement Number (raw) :3970466514
-	Header Length :5
-	Flags :018
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :1
-		Reset :0
-		Syn :0
-		Fin :0
-	Window :16384
-	Checksum : 0x(771e)
-	Urgent pointer :0
-
-	No options
-
-
-Hypertext Transfer Protocol
-	HTTP/1.1 200 OK
-	Cache-Control: no-store
-	Content-Length: 22
-	Content-Type: text/plain; charset=utf-8
-	Last-Modified: Fri, 11 Nov 2022 23:30:15 GMT
-	Accept-Ranges: bytes
-	ETag: 0x8D343F9E96C9DAC
-	Access-Control-Allow-Origin: *
-	Access-Control-Expose-Headers: X-MSEdge-Ref
-	Timing-Allow-Origin: *
-	X-Content-Type-Options: nosniff
-	X-Cache: CONFIG_NOCACHE
-	X-MSEdge-Ref: Ref A: 2EFE3C6514334A01A84761978F7C745F Ref B: PAR02EDGE0716 Ref C: 2022-12-02T20:07:43Z
-	Date: Fri, 02 Dec 2022 20:07:42 GMT
-	Connection: close
-
-data: 22 bytes
--------------------------------------
-Frame 7: 56 bytes (448 bits).
-
-
-Ethernet 2
-	Adresse de destination : c8:b2:9b:64:61:a8
-	Adresse de la source : 50:9a:4c:68:3f:e0
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 40
-	Identification : afaa
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 119
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 87f5
-	Source Address : 13.107.4.52
-	Destination Address : 10.188.175.213
-
-
-Transmission Control Protocol
-	Source port: 80
-	Destination port: 57457
-	Sequence number :540
-	Sequence Number (raw) :3184406779
-	Acknowledgement number :112
-	Acknowledgement Number (raw) :3970466514
-	Header Length :5
-	Flags :011
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :0
-		Reset :0
-		Syn :0
-		Fin :1
-	Window :16384
-	Checksum : 0x(649c)
-	Urgent pointer :0
-
-110
-112
-	No options
-
-
--------------------------------------
-Frame 8: 54 bytes (432 bits).
-
-
-Ethernet 2
-	Adresse de destination : 50:9a:4c:68:3f:e0
-	Adresse de la source : c8:b2:9b:64:61:a8
-	Type IP Datagram(0x0800)
-
-
-IPV4
-	Version : 4
-	IHL : 5 octets 0x(5)
-	Type of Service : 00
-	Total Lenght : 40
-	Identification : bdcb
-	Flags
-		Reserved bit : 0
-		Don't fragment : 1
-		More Fragment : 0
-	Fragment offset : 0x0(0)
-	Time To Live : 128
-	Protocol : TCP(6)
-	Header Checksum [Unverified] : 0000
-	Source Address : 10.188.175.213
-	Destination Address : 13.107.4.52
-
-
-Transmission Control Protocol
-	Source port: 57457
-	Destination port: 80
-	Sequence number :112
-	Sequence Number (raw) :3970466514
-	Acknowledgement number :541
-	Acknowledgement Number (raw) :3184406780
-	Header Length :5
-	Flags :011
-		Reserved 000
-		Nonce :0
-		Congestion Window Reduced (CWR) :0
-		ECN-Echo :0
-		Urgent :0
-		Acknowledgement :1
-		Push :0
-		Reset :0
-		Syn :0
-		Fin :1
-	Window :515
-	Checksum : 0x(cc4a)
-	Urgent pointer :0
-
+		Option :SACK Selective
 
 
 -------------------------------------

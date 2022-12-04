@@ -46,10 +46,11 @@ def selectfile():
 
             
 
-def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
+def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change,list_port_init):
     liste=[0,1]
     liste1=[0,1,2,3]
     textToReturn=""
+    iteration=0
     background="#76FF7B"
     if(protocol=="HTTP"):
         background="#FF0000"
@@ -59,12 +60,18 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
         adresses_port=Udp.get_Port(liste_octets)
     else:
         adresses_port=Tcp.get_Port(liste_octets,suite)
-    
+    for index in range (0,len(list_port_init)):
+        if((adresses_port[0]==list_port_init[index][1] and adresses_port[1]==list_port_init[index][0]) or adresses_port==list_port_init[index]):
+            iteration=index
     if(change):
         adresses_port=(adresses_port[1],adresses_port[0])
         adresses_ip=(adresses_ip[1],adresses_ip[0])
 
     ip_list=[adresses_ip[0],adresses_ip[1],adresses_port[0],adresses_port[1]]
+
+    ajout=""
+    for i in range(0,iteration):
+        ajout=ajout+"\t \t"
 
     for j in liste1:
         fr1=tk.Frame(fr,bg=background)
@@ -74,7 +81,7 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
             if(change):
                 tm="\t <------------------------------------------------ \t"
             if j==0 and i==1:
-                tm=ip_list[2] #affichage source port 
+                tm=ajout+ip_list[2] #affichage source port 
             if i==0:
                 tm=" "
             if j==len(liste1)-2 and i!=0:
@@ -85,12 +92,13 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
             if j==len(liste1)-1 and i==1:
                 tm=ip_list[3] #affichage destination port
             if j==0 and i==0 :
-                tm=ip_list[0] #affichage adresse ip de source
+                tm=ajout+ip_list[0] #affichage adresse ip de source
             if j==len(liste1)-1 and i==0:
                 tm=ip_list[1] #affichage adresse ip de destination
             if i==1 and j==len(liste1)-3:
                 tm=protocol+"\n"
             textToReturn=textToReturn+tm+"\n"
+            #tm=ajout+tm
             label_t=tk.Label(fr1,text=tm,bg=background)
             label_t.pack(side="top")
         fr1.pack(side="left")
@@ -122,7 +130,7 @@ def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        textToSave=textToSave+flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i])
+        textToSave=textToSave+flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i],list_port_init)
         i=i+1
     showfleche(t,list_port_init)
     entry=tk.Entry(t)

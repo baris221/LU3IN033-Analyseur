@@ -68,17 +68,16 @@ def main():
                 # Ici on gère le cas où on a un segment TCP
                 if(transportation==6):
                     adresse_port=Tcp.get_Port(liste_octets,suite)
-                    if(m==1):
-                        port_init=adresse_port
-                        list_port_init.append(port_init)
                     if(adresse_port != port_ex and port_ex[0]!=adresse_port[1] and port_ex[1]!=adresse_port[0] ):
                         seq=0
                         ack=0
                         m=1
                     
-                    if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ):
-                       
+                    if(port_ex[0]==adresse_port[1] and port_ex[1]==adresse_port[0] ): 
                         seq,ack=ack,seq
+                    if(m==1):
+                        port_init=adresse_port
+                        list_port_init.append(port_init)
                     cng=(port_init[0]==adresse_port[1] and port_init[1]==adresse_port[0] and i!=1)
                     liste_change.append(cng)
                     (window,seq_aug,awk_aug)=Tcp.decodage_TCP_entete(liste_octets,suite,seq,ack)
