@@ -17,12 +17,20 @@ liste=[0,1]
 liste1=[0,1,2]
 
 
-def save():
+def save(tkinter_file):
     files = [('All Files', '*.*'), 
              ('Python Files', '*.py'),
              ('Text Document', '*.txt'),
              ('Photos','*.png')]
-    file = fd.asksaveasfile(filetypes = files, defaultextension = files)
+    file_path = fd.asksaveasfilename(filetypes = files, defaultextension = files)
+    #print(str(file_path))
+
+
+    f=open(file_path,"w")
+    f.write(str(tkinter_file))
+    f.close()
+
+
 
 def selectfile():
     filetypes = (
@@ -41,6 +49,7 @@ def selectfile():
 def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
     liste=[0,1]
     liste1=[0,1,2,3]
+    textToReturn=""
     background="#76FF7B"
     if(protocol=="HTTP"):
         background="#FF0000"
@@ -81,11 +90,13 @@ def flowgraph(liste_octets,t,seq_ack,protocol,suite,http_string,change):
                 tm=ip_list[1] #affichage adresse ip de destination
             if i==1 and j==len(liste1)-3:
                 tm=protocol+"\n"
+            textToReturn=textToReturn+tm+"\n"
             label_t=tk.Label(fr1,text=tm,bg=background)
             label_t.pack(side="top")
         fr1.pack(side="left")
 
     fr.pack(side="top",expand=True)
+    return textToReturn
 
 def showfleche(t,liste):
  
@@ -100,7 +111,7 @@ def showfleche(t,liste):
 
     
 def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,list_port_init):    
-
+    textToSave=""
     t=tk.Tk()
     t.title("Wireshark Flow Graph")
     t.resizable(width=False,height=False)
@@ -111,11 +122,11 @@ def showgraph(li,liste_seq_ack,liste_protocol,liste_suite,http_list,list_change,
         for line in frame:
             for byte in line:
                 liste_octets.append(byte)
-        flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i])
+        textToSave=textToSave+flowgraph(liste_octets,t,liste_seq_ack[i],liste_protocol[i],liste_suite[i],http_list[i],list_change[i])
         i=i+1
     showfleche(t,list_port_init)
     entry=tk.Entry(t)
-    btn = tk.Button(t, text = 'Save', command = lambda : save())
+    btn = tk.Button(t, text = 'Save', command = lambda : save(textToSave))
     btn.pack(side = "top", pady = 20)
     btn1=tk.Button(t,text="Ouvre Analyseur",command=selectfile)
     btn1.pack(side = "top", pady = 20)
