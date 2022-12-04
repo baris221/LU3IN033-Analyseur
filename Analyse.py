@@ -6,6 +6,7 @@ Created on Fri Sep 30 13:46:06 2022
 """
 import contextlib
 import sys
+import os
 import Ethernet
 import Utils
 import Ip
@@ -112,5 +113,7 @@ def main():
 
 
 
+if not os.path.exists("resultat"):
+    os.mkdir("resultat")
 main()
     
