@@ -42,6 +42,9 @@ def selectfile():
         title='resultat.txt',
         initialdir='/resultat',
         filetypes=filetypes)
+    f=open(filename,"r")
+    analyse=f.read()
+    print(analyse)
 
 def informations(t):
     frame=tk.Frame(t,bg="#76FF7B")
